@@ -107,7 +107,7 @@
     <!-- Nav Bar 오른쪽 정렬 -->
     <nav class="navbar navbar-expand-sm  fixed-top" id="gnb">
         <div class="container-fluid">
-            <a class="navbar-brand" href="${path1 }">BuddyStore</a>
+            <a class="navbar-brand" href="${path1 }">WEEK STORE</a>
             <div class="collapse navbar-collapse justify-content-end">
                 <ul class="navbar-nav">
                     <c:if test="${empty sid }">
@@ -124,7 +124,7 @@
                             <a class="nav-link h-nav" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">고객만족센터</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">공지사항</a></li>
-                                <li><a class="dropdown-item" href="#">QNA</a></li>
+                                <li><a class="dropdown-item" href="${path1 }/QnaList.do">QNA</a></li>
                                 <li><a class="dropdown-item" href="#">FAQ</a></li>
                             </ul>
                         </li>
@@ -144,7 +144,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="${path1 }/NoticeList.do">공지사항</a></li>
-                                <li><a class="dropdown-item" href="#">QNA</a></li>
+                                <li><a class="dropdown-item" href="${path1 }/QnaList.do">QNA</a></li>
                                 <li><a class="dropdown-item" href="#">FAQ</a></li>
                             </ul>
                         </li>

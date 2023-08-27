@@ -79,6 +79,19 @@ public interface DBConnect {
     final static String PAYMENT_SELECT_ONE ="select * from payment where sno=?";
     final static String PAYMENT_SELECT_CID ="select * from payment where cid=?";
 
+    //QNA
+    final static String QNA_SELECT_ALL = "select * from QNA order by qno desc";
+    final static String QNA_SELECT_ONE = "select * from QNA where qno=?";
+    final static String QNA_INSERT = "insert into qna(title, content, author, lev, par) values(?,?,?,?,?)";
+    final static String QNA_SELECT_RANGE = "select * from QNA order by qno desc limit 5 offset ?";
+    final static String QNA_COUNT = "select count(*) as cnt from QNA";
+    final static String QNA_COUNT_TITLE = "select count(*) as cnt from QNA where title like ?";
+    final static String QNA_COUNT_CONTENT = "select count(*) as cnt from QNA where content like ?";
+    final static String QNA_COUNT_ALL = "select count(*) as cnt from QNA where title like ? or content like ?";
+    final static String QNA_SELECT_TITLE_RANGE = "select * from QNA where title like ? order by resdate desc limit 5 offset ?";
+    final static String QNA_SELECT_CONTENT_RANGE = "select * from QNA where content like ? order by resdate desc limit 5 offset ?";
+    final static String QNA_SELECT_ALL_RANGE = "select * from QNA where title like ? or content like ? order by resdate desc limit 5 offset ?";
+
     public Connection connect();
     public void close(PreparedStatement pstmt, Connection conn);
     public void close(ResultSet rs, PreparedStatement pstmt, Connection conn);

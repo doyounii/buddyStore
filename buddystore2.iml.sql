@@ -200,3 +200,58 @@ select * from receive;
 select * from notice;
 
 commit;
+
+
+-- 1:1 문의 테이블 생성
+CREATE TABLE qna(
+qno serial PRIMARY KEY,
+title VARCHAR(200) NOT NULL,
+content VARCHAR(1000),
+author VARCHAR(16),
+resdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+cnt INT DEFAULT 0,
+lev INT DEFAULT 0,	-- 질문(0), 답변(1)
+par INT,		-- 부모 글번호 -> 질문(자신 레코드의 qno), 답변(질문의 글번호)
+FOREIGN KEY(author) REFERENCES custom(id) ON DELETE CASCADE 
+);
+
+-- 1:1 문의 더미 데이터 삽입
+INSERT INTO qna(title, content, author, lev) VALUES('질문1', '질문1 내용입니다.', 'admin', 0);
+INSERT INTO qna(title, content, author, lev) VALUES('질문2', '질문2 내용입니다.', 'admin', 0);
+INSERT INTO qna(title, content, author, lev) VALUES('질문3', '질문3 내용입니다.', 'admin', 0);
+INSERT INTO qna(title, content, author, lev) VALUES('질문4', '질문4 내용입니다.', 'admin', 0);
+INSERT INTO qna(title, content, author, lev) VALUES('질문5', '질문5 내용입니다.', 'admin', 0);
+INSERT INTO qna(title, content, author, lev) VALUES('질문6', '질문6 내용입니다.', 'admin', 0);
+UPDATE qna SET par=qno WHERE lev = 0;
+
+INSERT INTO qna(title, content, author, lev, par) VALUES('질문1 답변', '답변 내용', 'admin', 1, 1);
+INSERT INTO qna(title, content, author, lev, par) VALUES('질문2 답변', '답변 내용', 'admin', 1, 2);
+INSERT INTO qna(title, content, author, lev, par) VALUES('질문3 답변', '답변 내용', 'admin', 1, 3);
+INSERT INTO qna(title, content, author, lev, par) VALUES('질문4 답변', '답변 내용', 'admin', 1, 4);
+INSERT INTO qna(title, content, author, lev, par) VALUES('질문5 답변', '답변 내용', 'admin', 1, 5);
+INSERT INTO qna(title, content, author, lev, par) VALUES('질문6 답변', '답변 내용', 'admin', 1, 6);
+
+-- qnalist 뷰 생성
+CREATE VIEW qnalist AS (SELECT a.qno AS qno, a.title AS title, a.content AS content, 
+a.author AS author, a.resdate AS resdate, a.cnt AS cnt, a.lev AS lev, a.par AS par, b.name AS NAME
+FROM qna a, custom b WHERE a.author=b.id ORDER BY a.par DESC, a.lev ASC, a.qno ASC);
+-- 1:1 문의 게시판 댓글 테이블 생성
+CREATE TABLE comment(
+	cno serial PRIMARY KEY,
+	qno INT,
+	author VARCHAR(16),
+   resdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+   content VARCHAR(200),
+   FOREIGN KEY(qno) REFERENCES qna(qno) ON DELETE CASCADE
+);
+
+-- 댓글 더미 데이터 삽입
+INSERT INTO comment(qno, author, content) VALUES(3, 'admin', '테스트용 댓글');
+INSERT INTO comment(qno, author, content) VALUES(4, 'admin', '테스트용 댓글');
+INSERT INTO comment(qno, author, content) VALUES(5, 'admin', '테스트용 댓글');
+INSERT INTO comment(qno, author, content) VALUES(6, 'admin', '테스트용 댓글');
+INSERT INTO comment(qno, author, content) VALUES(12, 'admin', '테스트용 댓글');
+
+COMMIT;
+
+select * from QNA order by qno desc;
