@@ -8,13 +8,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>버디스토어</title>
     <c:set var="path" value="<%=request.getContextPath() %>" />
-    <script src="../js/jquery-1.10.0.js"></script>
+    <script src="./js/jquery-1.10.0.js"></script>
+    <link rel="stylesheet" href="./vdo.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <style>
         .contents {
             min-height: 100vh;
-            padding: 100px 0px;
+            padding-top: 100px;
+        }
+        .book-section {
+            clear: both;
+            min-width: 1200px;
+            min-height: 500px;
+            text-align: center;
+        }
+        .book {
+            max-height: 300px;
+            max-width: 230px;
+        }
+        .img {
+            padding: 20px 100px 0px 100px;
+            top: 20px;
+        }
+        .book-section section {
+            display: inline-flex;
+            flex-direction: column;
+        }
+        .book-section span {
+            font-size:26px; text-align: center;  color: #000000; font-weight: 900;
+        }
+        .book-section span:nth-child(3) {
+            font-size:26px; text-align: center;  color: #0B7B20; font-weight: 900;
+        }
+        .book-section p {
+            font-size:26px; text-align: center;  color: #000000; font-weight: 900;
+        }
+        .book-section p:first-child {
+            font-size:26px; text-align: center;  color: #0B7B20; font-weight: 900;
         }
     </style>
 </head>
@@ -22,7 +53,86 @@
 <%@ include file="/header.jsp"%>
 <div class="container-fluid">
     <div class="contents">
-        <h2>요기는 인덱스~!</h2>
+        <div class="book-section">
+            <p>BEST BOOK</p>
+            <span>W</span><span>EE</span><span>K STORE에서 자신있게 추천드려요!</span>
+            <p>강좌까지 함께 즐겨요.</p>
+            <section class="img"><img src="./images/pic.jpeg" alt="베스트셀러" class="book"></section>
+            <section class="player">
+                <div class="vdo_fr">
+                    <video id="video">
+                        <source src="./images/demo.mp4" type="video/mp4" />
+                        <source src="./images/demo.ogv" type="video/ogg" />
+                        <source src="./images/demo.webm" type="video/webm" />
+                    </video>
+                </div>
+                <div id="timebar">
+                    <span id="currentTime"></span>
+                </div>
+                <div id="buttonbar">
+                    <button id="restart" class="player_btn"></button>
+                    <button id="rew" class="player_btn"></button>
+                    <button id="play" class="player_btn"></button>
+                    <button id="pause" class="player_btn"></button>
+                    <button id="stop" class="player_btn"></button>
+                    <button id="fastFwd" class="player_btn"></button>
+                    <button id="mute" class="player_btn"></button>
+                    <button id="unmute" class="player_btn"></button>
+                    <input id="vol" type="range" value="500" min="0" max="1000">
+                    <button id="vmup" class="player_btn"></button>
+                    <button id="vmdown" class="player_btn"></button>
+                    <button id="volTxt">100%</button>
+                    <button id="sizeup" class="player_btn"></button>
+                    <button id="sizedown" class="player_btn"></button>
+                    <button id="full" class="player_btn"></button>
+                    <button id="original" class="player_btn"></button>
+                </div>
+                <div id="progress">
+                    <div id="progressBar"></div>
+                </div>
+            </section>
+            <script src="./js/vdo.js"></script>
+        </div>
+        <div class="book-section">
+            <p>NEW BOOK</p>
+            <span>W</span><span>EE</span><span>K STORE에서 새로운 책이 나왔어요!</span>
+            <p>최신 강좌도 나왔어요.</p>
+            <section class="img"><img src="./images/pic.jpeg" alt="뉴북" class="book" ></section>
+            <section class="player2">
+                <div class="vdo_fr2">
+                    <video id="video2">
+                        <source src="./images/demo2.mp4" type="video/mp4" />
+                        <source src="./images/demo2.ogv" type="video/ogg" />
+                        <source src="./images/demo2.webm" type="video/webm" />
+                    </video>
+                </div>
+                <div id="timebar2">
+                    <span id="currentTime2"></span>
+                </div>
+                <div id="buttonbar2">
+                    <button id="restart2" class="player_btn2"></button>
+                    <button id="rew2" class="player_btn2"></button>
+                    <button id="play2" class="player_btn2"></button>
+                    <button id="pause2" class="player_btn2"></button>
+                    <button id="stop2" class="player_btn2"></button>
+                    <button id="fastFwd2" class="player_btn2"></button>
+                    <button id="mute2" class="player_btn2"></button>
+                    <button id="unmute2" class="player_btn2"></button>
+                    <input id="vol2" type="range" value="500" min="0" max="1000">
+                    <button id="vmup2" class="player_btn2"></button>
+                    <button id="vmdown2" class="player_btn2"></button>
+                    <button id="volTxt2">100%</button>
+                    <button id="sizeup2" class="player_btn2"></button>
+                    <button id="sizedown2" class="player_btn2"></button>
+                    <button id="full2" class="player_btn2"></button>
+                    <button id="original2" class="player_btn2"></button>
+                </div>
+                <div id="progress2">
+                    <div id="progressBar2"></div>
+                </div>
+            </section>
+            <script src="./js/vdo2.js"></script>
+        </div>
     </div>
 </div>
     <%@ include file="/footer.jsp" %>

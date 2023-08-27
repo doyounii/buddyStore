@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <style>
-    @charset "UTF-8";
     /* 푸터 구역 스타일 */
     .ft {
         clear: both;

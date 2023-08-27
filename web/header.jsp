@@ -129,7 +129,7 @@
                             </ul>
                         </li>
                     </c:if>
-                    <c:if test="${sid eq 'admin' }">
+                    <c:if test="${sid eq 'admin123' }">
                         <li class="nav-item"><a href="${path1 }/Admin.do" class="nav-link">관리자 페이지</a></li>
                         <li class="nav-item"><a href="${path1 }/Logout.do" class="nav-link">로그아웃</a></li>
                     </c:if>
