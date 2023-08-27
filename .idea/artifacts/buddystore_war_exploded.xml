@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="buddystore:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/buddystore</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="buddystore" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="servlets.cos" />
+          <element id="library" level="project" name="google.code.gson" />
+          <element id="library" level="project" name="javax.json.api" />
+          <element id="library" level="project" name="jsoup" />
+          <element id="library" level="project" name="json" />
+          <element id="library" level="project" name="junit" />
+          <element id="library" level="project" name="net.markenwerk.utils.json.parser" />
+          <element id="library" level="project" name="postgresql" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="buddystore/web/Web" />
+    </root>
+  </artifact>
+</component>
