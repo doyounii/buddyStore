@@ -28,5 +28,6 @@
     <orderEntry type="library" name="junit" level="project" />
     <orderEntry type="library" name="net.markenwerk.utils.json.parser" level="project" />
     <orderEntry type="library" name="postgresql" level="project" />
+    <orderEntry type="library" name="jstl" level="project" />
   </component>
 </module>

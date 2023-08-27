@@ -11,9 +11,11 @@
     #menu-bar {
         top: 56px;
         z-index: 1500;
+        background-color: white;
     }
     #gnb {
         z-index: 2000;
+        background-color: white;
     }
     #gnb .nav-link {
         color: #0B7B20;
@@ -93,6 +95,12 @@
         background-color: white;
         font-weight: 700;
         font-size: 1rem;
+    }
+    .contents {
+        margin-top: 100px;
+    }
+    .section {
+        margin-top: 100px;
     }
 </style>
 <header>
@@ -181,7 +189,6 @@
             <a class="nav-link" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">이벤트</a>
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">진행 중인 이벤트</a></li>
-                <li><a class="dropdown-item" href="#">종료된 이벤트</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">당첨자 발표</a></li>
             </ul>

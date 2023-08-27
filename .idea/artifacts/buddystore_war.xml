@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="war" name="buddystore:war">
-    <output-path>$PROJECT_DIR$/out/artifacts/buddystore_war</output-path>
+    <output-path>$PROJECT_DIR$/out/artifacts/buddystore</output-path>
     <root id="archive" name="buddystore_war.war">
       <element id="artifact" artifact-name="buddystore:war exploded" />
     </root>
