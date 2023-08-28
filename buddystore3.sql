@@ -278,12 +278,8 @@ select * from payment where cid='admin';
  
  
  
- select pno, sum(amount) from serve group by pno;
- 
-delete from product;
-delete from receive;
-delete from serve;
+ select pno, sum(amount) as amount from serve group by pno;
 
-drop view inventory;
+insert into receive values (default, 1,1,1000,default)
 
 commit;
