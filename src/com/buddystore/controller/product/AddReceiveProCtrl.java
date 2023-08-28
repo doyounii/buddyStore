@@ -1,6 +1,8 @@
 package com.buddystore.controller.product;
 
 import com.buddystore.dto.Receive;
+import com.buddystore.dto.Serve;
+import com.buddystore.model.PaymentDAO;
 import com.buddystore.model.ProductDAO;
 
 import javax.servlet.ServletContext;
@@ -24,8 +26,21 @@ public class AddReceiveProCtrl extends HttpServlet {
         rec.setRprice(Integer.parseInt(request.getParameter("rprice")));
 
         ProductDAO dao = new ProductDAO();
+
+
         int cnt = dao.addReceive(rec);
-        if(cnt>0){
+
+        //출고 처리(PaymentDAO.addServe(serv))
+        PaymentDAO payDAO = new PaymentDAO();
+        Serve serv = new Serve();
+        serv.setPno(Integer.parseInt(request.getParameter("pno")));
+        serv.setAmount(0);
+        int sprice = (int) Double.parseDouble(request.getParameter("rprice"));
+        serv.setSprice(sprice);
+
+        int cnt2 = payDAO.addServe(serv);
+
+        if(cnt>0 && cnt2>0){
             response.sendRedirect(home+"/ProList.do");
         } else {
             response.sendRedirect(home+"/AddReceive.do");

@@ -200,6 +200,38 @@ public class ProductDAO {
         }
         return cnt;
     }
+    public int insertRecieveAndServe(int pno) {
+        System.out.println(pno+"번호입니동");
+        int cnt =0;
+        DBConnect con = new PostgreCon();
+        conn = con.connect();
+        try {
+            pstmt = conn.prepareStatement(DBConnect.RECEIVE_INSERT);
+            pstmt.setInt(1, pno);
+            pstmt.setInt(2, 0);
+            pstmt.setInt(3, 0);
+            cnt = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(pstmt, conn);
+        }
+
+        con = new PostgreCon();
+        conn = con.connect();
+        try {
+            pstmt = conn.prepareStatement(DBConnect.SERVE_INSERT);
+            pstmt.setInt(1, pno);
+            pstmt.setInt(2, 0);
+            pstmt.setInt(3, 0);
+            cnt = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(pstmt, conn);
+        }
+        return cnt;
+    }
 
     public int updateProduct(Product pro){
         int cnt =0;
@@ -317,4 +349,5 @@ public class ProductDAO {
         }
         return cnt;
     }
+
 }

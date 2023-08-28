@@ -68,7 +68,9 @@ public class AddProductProCtrl extends HttpServlet {
 
             ProductDAO dao = new ProductDAO();
             int cnt = dao.addProduct(pro);
-            if(cnt>0){
+
+
+            if(cnt>0 ){
                 response.sendRedirect(home+"/ProList.do");
             } else {
                 response.sendRedirect(home+"/AddProduct.do");

@@ -253,7 +253,37 @@ INSERT INTO comment(qno, author, content) VALUES(12, 'admin', '테스트용 댓�
 
 COMMIT;
 
-select * from product where cate='A'
-select * from inventory where pno=3;
+select * from product;
+select * from inventory;
 select * from receive;
-select sum(amount) from receive where pno=? group by pno ;
+select * from serve;
+select sum(amount) from receive where pno=1 group by pno ;
+select * from payment where cid='admin';
+
+ SELECT a.pno,
+    sum(a.amount) - sum(b.amount) AS amount
+   FROM receive a,
+    serve b
+  WHERE a.pno = b.pno
+  GROUP BY a.pno, b.pno;
+  
+ create view inventory as (select a.pno as pno, (sum(a.amount)-sum(b.amount)) as amount from receive a, serve b where a.pno=b.pno group by a.pno, b.pno);
+ select a.pno, (sum(a.amount) - sum(b.amount)) AS amount from receive a, serve b  WHERE a.pno = b.pno group by a.pno, b.pno;
+ 
+ 
+ create view sel1 as (select pno, sum(amount) as amount from receive group by pno);
+ create view sel2 as (select pno, sum(amount) as amount from serve group by pno);
+ 
+ select a.pno, (a.amount-b.amount) AS amount from sel1 a, sel2 b  WHERE a.pno = b.pno;
+ 
+ 
+ 
+ select pno, sum(amount) from serve group by pno;
+ 
+delete from product;
+delete from receive;
+delete from serve;
+
+drop view inventory;
+
+commit;
