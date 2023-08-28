@@ -106,10 +106,14 @@ rprice integer default 1000,
 resdate timestamp default current_timestamp);
 
 -- 출고 테이블 생성
-create table serve(sno serial primary key,
+create table serve(
+serno serial primary key,
 pno integer not null, amount integer default 1,
 sprice integer default 1000,
-resdate timestamp default current_timestamp);
+resdate timestamp default current_timestamp,
+sno int not null,
+FOREIGN KEY(sno) REFERENCES payment(sno) ON DELETE CASCADE 
+);
 
 
 -- 배송 테이블 생성
