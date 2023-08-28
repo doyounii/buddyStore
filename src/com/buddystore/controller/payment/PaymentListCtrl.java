@@ -26,7 +26,7 @@ public class PaymentListCtrl extends HttpServlet {
 
 
         request.setAttribute("payList", payList);
-        RequestDispatcher view = request.getRequestDispatcher("/payment/paymentList.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("/custom/mypage.jsp");
         view.forward(request, response);
     }
 }

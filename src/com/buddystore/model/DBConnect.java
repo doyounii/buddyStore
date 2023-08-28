@@ -29,8 +29,8 @@ public interface DBConnect {
     final static String PRODUCT_SELECT_ALL = "select * from product order by pno";
     final static String PRODUCT_SELECT_CATE = "select * from product where cate=? order by pno";
     final static String PRODUCT_SELECT_ONE = "select * from product where pno=?";
-    final static String PRODUCT_SELECT_NEW = "select * from product order by pno desc limit 5";
-    final static String PRODUCT_SELECT_BEST = "select * from product where pno in (select pno from payment group by pno order by sum(amount) desc limit 5)";
+    final static String PRODUCT_SELECT_NEW = "select * from product order by pno desc limit 1";
+    final static String PRODUCT_SELECT_BEST = "select * from product where pno in (select pno from payment group by pno order by sum(amount) desc limit 1)";
     final static String PRODUCT_INSERT = "insert into product values(default, ?, '', ?, ?, ?, ?, ?, ?, ?, default)";
     final static String PRODUCT_INSERT_UPDATE = "update product set prono = concat(cate, pno) where pno in (select pno from product order by resdate desc limit 1)";
     final static String PRODUCT_UPDATE = "update product set pname=?, pcomment=?, plist=?, price=?, imgsrc1=?, imgsrc2=?, imgsrc3=? where pno=?";
@@ -65,7 +65,8 @@ public interface DBConnect {
 
     //재고 조회
     final static String INVENTORY_SELECT_ALL = "select * from inventory order by pno desc";
-    final static String INVENTORY_SELECT_ONE = "select * from inventory where pno=?";
+    //final static String INVENTORY_SELECT_ONE = "select * from inventory where pno=?";
+    final static String INVENTORY_SELECT_ONE = "select sum(amount) as amount from receive where pno=? group by pno";
 
     //입고 처리
     final static String RECEIVE_INSERT = "insert into receive values (default, ?, ?, ?, default)";

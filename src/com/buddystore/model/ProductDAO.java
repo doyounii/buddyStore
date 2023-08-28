@@ -262,6 +262,25 @@ public class ProductDAO {
         return cateList;
     }
 
+//    public int getAmount(int pno){
+//        int amount = 0;
+//        DBConnect con = new PostgreCon();
+//        try {
+//            conn = con.connect();
+//            pstmt = conn.prepareStatement(DBConnect.INVENTORY_SELECT_ONE);
+//            pstmt.setInt(1, pno);
+//            rs = pstmt.executeQuery();
+//            if(rs.next()){
+//                amount = rs.getInt("amount");
+//            }
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        } finally {
+//            con.close(rs, pstmt, conn);
+//        }
+//        return amount;
+//    }
+
     public int getAmount(int pno){
         int amount = 0;
         DBConnect con = new PostgreCon();

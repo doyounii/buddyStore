@@ -50,6 +50,10 @@
                         <td>${qna.content }</td>
                     </tr>
                     <tr>
+                        <th>작성자</th>
+                        <td>${qna.author }</td>
+                    </tr>
+                    <tr>
                         <th>작성일시</th>
                         <td>${qna.resdate }</td>
                     </tr>
@@ -60,10 +64,10 @@
                     </tbody>
                 </table>
                 <div class="btn-group">
-                    <a href="${path }/QnaList.do" class="btn btn-primary">글 목록</a>
+                    <a href="${path }/QnaList.do" class="btn btn-primary" style="background-color: #0B7B20">글 목록</a>
                     <c:if test="${!empty sid}">
-                        <a href="${path }/UpdateNotice.do?no=${qna.no }" class="btn btn-primary">글 수정</a>
-                        <a href="${path }/DeleteNotice.do?no=${qna.no }" class="btn btn-primary">글 삭제</a>
+                        <a href="${path }/UpdateQna.do?no=${qna.qno }" class="btn btn-primary" style="background-color: #0B7B20">글 수정</a>
+                        <a href="${path }/DeleteQna.do?no=${qna.qno }" class="btn btn-primary" style="background-color: #0B7B20">글 삭제</a>
                     </c:if>
                 </div>
             </div>

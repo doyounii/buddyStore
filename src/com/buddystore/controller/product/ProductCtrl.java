@@ -25,6 +25,7 @@ public class ProductCtrl extends HttpServlet {
 
         request.setAttribute("pro", pro);
         request.setAttribute("amount", amount);
+        System.out.println(amount);
         RequestDispatcher view = request.getRequestDispatcher("/product/getProduct.jsp");
         view.forward(request, response);
     }

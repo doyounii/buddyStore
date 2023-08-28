@@ -6,19 +6,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마이페이지</title>
+    <title>결제 목록</title>
     <c:set var="path" value="<%=request.getContextPath() %>" />
     <%@ include file="../common.jsp"%>
     <style>
-    #tb1 { width:960px; margin:40px auto; }
-    #tb1 th { background-color: #111; color:#fff; }
-    .item1 { width:10%; }
-    .item2 { width:10%; }
-    .item3 { width:60%; }
-    .item4 { width:20%; }
-    #page-nation1 { width: 960px; margin:20px auto; }
-    #tb11 { width:960px; margin:40px auto; }
-    #tb11 th { background-color: #111; color:#fff; }
+        #tb1 { width:960px; margin:40px auto; }
+        #tb1 th { background-color: #111; color:#fff; }
+        .item1 { width:10%; }
+        .item2 { width:20%; }
+        .item3 { width:55%; }
+        .item4 { width:15%; }
     </style>
 </head>
 <body>
@@ -29,56 +26,16 @@
             <div class="container">
                 <ol class="breadcrumb justify-content-end">
                     <li class="breadcrumb-item"><a href="${path }">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Custom</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">My Page</li>
+                    <li class="breadcrumb-item"><a href="${path }/Mypage.do">마이페이지</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">배송조회</li>
                 </ol>
             </div>
         </nav>
-        <h2 class="title">내 정보보기</h2>
+        <h2 class="title">결제 내역</h2>
+        <p class="msg">${msg }</p>
         <div class="container">
             <div class="box_wrap">
                 <table class="table table-secondary" id="tb1">
-                    <tbody>
-                    <tr>
-                        <th>아이디</th>
-                        <td>${cus.id }</td>
-                    </tr>
-                    <tr>
-                        <th>비밀번호</th>
-                        <td>${cus.pw }</td>
-                    </tr>
-                    <tr>
-                        <th>이름</th>
-                        <td>${cus.name }</td>
-                    </tr>
-                    <tr>
-                        <th>가입일시</th>
-                        <td>${cus.regdate }</td>
-                    </tr>
-                    <tr>
-                        <th>이메일</th>
-                        <td>${cus.email }</td>
-                    </tr>
-                    <tr>
-                        <th>연락처</th>
-                        <td>${cus.tel }</td>
-                    </tr>
-                    <tr>
-                        <th>포인트</th>
-                        <td>${cus.point }</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <div class="btn-group">
-                    <a href="${path }/MyinfoUpdate.do?id=${cus.id }" class="btn btn-primary">회원정보수정</a>
-                    <a href="${path }" class="btn btn-primary">메인으로</a>
-                </div>
-            </div>
-        </div>
-        <h2 class="title">결제 내역</h2>
-        <div class="container">
-            <div class="box_wrap">
-                <table class="table table-secondary" id="tb11">
                     <thead>
                     <tr>
                         <th class="item1">연번</th>

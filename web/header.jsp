@@ -79,7 +79,7 @@
     .navbar-brand:hover {
         color: #0B7B20;
     }
-    p {
+    .divider {
         margin-top: -2px;
         /* margin-bottom: 1rem; */
         font-size: 23px;
@@ -129,9 +129,17 @@
                             </ul>
                         </li>
                     </c:if>
-                    <c:if test="${sid eq 'admin123' }">
+                    <c:if test="${sid eq 'admin' }">
                         <li class="nav-item"><a href="${path1 }/Admin.do" class="nav-link">관리자 페이지</a></li>
                         <li class="nav-item"><a href="${path1 }/Logout.do" class="nav-link">로그아웃</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link h-nav" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">고객만족센터</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">공지사항</a></li>
+                                <li><a class="dropdown-item" href="${path1 }/QnaList.do">QNA</a></li>
+                                <li><a class="dropdown-item" href="#">FAQ</a></li>
+                            </ul>
+                        </li>
                     </c:if>
                     <c:if test="${!empty sid && sid ne 'admin'}">
                         <li class="nav-item"><a href="#" class="nav-link">찜목록</a></li>
@@ -158,7 +166,7 @@
         <li class="nav-item dropdown">
             <a class="nav-link" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">유ㆍ초등</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="${path1 }/hi.jsp">유아 동화책</a></li>
+                <li><a class="dropdown-item" href="${path1 }/CateProList.do?cate=A">유아 동화책</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">초등 교과서</a></li>
                 <li><a class="dropdown-item" href="#">초등 참고서</a></li>

@@ -67,7 +67,7 @@
                             </select>
                             <span style="display: inline-block; width:8px;"></span>
                             <input type="text" name="kwd" id="kwd" class="form-control" placeholder="검색어 입력" required>
-                            <input type="submit" value="검색" class="btn btn-primary">
+                            <input type="submit" value="검색" class="btn btn-primary" style="background-color: #0B7B20">
                         </fieldset>
                     </form>
                 </div>
@@ -139,7 +139,7 @@
                 <hr>
                 <c:if test="${!empty sid}">
                 <div class="container">
-                    <a href="${path }/AddQna.do" class="btn btn-primary">QNA 등록</a>
+                    <a href="${path }/AddQna.do" class="btn btn-primary" style="background-color: #0B7B20">QNA 등록</a>
                 </div>
                 </c:if>
             </div>
