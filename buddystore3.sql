@@ -108,18 +108,19 @@ resdate timestamp default current_timestamp);
 -- 출고 테이블 생성
 create table serve(
 serno serial primary key,
-pno integer not null, amount integer default 1,
+pno integer not null, 
+amount integer default 1,
 sprice integer default 1000,
 resdate timestamp default current_timestamp,
-sno int not null,
-FOREIGN KEY(sno) REFERENCES payment(sno) ON DELETE CASCADE 
+sno integer default 0
 );
 
 
 -- 배송 테이블 생성
 create table delivery(
 dno serial primary key,
-sno integer not null, cid varchar(20) not null,
+sno integer not null,
+cid varchar(20) not null,
 daddr varchar(300) not null, 
 custel varchar(13) not null,
 pcom varchar(100),
@@ -201,6 +202,7 @@ select * from cart;
 select * from serve;
 select * from receive;
 select * from notice;
+select * from product;
 
 commit;
 
@@ -285,5 +287,5 @@ select * from payment where cid='admin';
  select pno, sum(amount) as amount from serve group by pno;
 
 insert into receive values (default, 1,1,1000,default)
-
+select * from notice order by no desc limit 1;
 commit;

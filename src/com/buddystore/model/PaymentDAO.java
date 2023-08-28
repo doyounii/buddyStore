@@ -30,11 +30,29 @@ public class PaymentDAO {
             pstmt.setString(6, pay.getCnum());
             pstmt.setInt(7, pay.getPayprice());
             cnt = pstmt.executeUpdate();
+            pstmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            String sql = "SELECT * FROM payment order by sno desc limit 1";
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            if(rs.next()) {
+                pay.setSno(rs.getInt("sno"));
+            }
+            rs.close();
+            pstmt.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
-            con.close(pstmt, conn);
+            con.close(rs, pstmt, conn);
         }
+        if (cnt >0 ) {
+            cnt = pay.getSno();
+        }
+
         return cnt;
     }
 
@@ -48,6 +66,7 @@ public class PaymentDAO {
             pstmt.setInt(1, serv.getPno());
             pstmt.setInt(2, serv.getAmount());
             pstmt.setInt(3, serv.getSprice());
+            pstmt.setInt(4, serv.getSno());
             cnt = pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -42,7 +42,7 @@ public interface DBConnect {
 
     //출고 처리 패턴
     final static String SERVE_PAYMENT = "insert into payment values (default, ?, ?, ?, ?, ?, ?, ?, '')";
-    final static String SERVE_INSERT = "insert into serve values(default, ?, ?, ?, default)";
+    final static String SERVE_INSERT = "insert into serve values(default, ?, ?, ?, default, ?)";
     final static String DELIVERY_INSERT = "insert into delivery values (default, ?, ?, ?, ?, '','',default,default,'','')";
     final static String CART_DELETE = "delete from cart where cartno=?";
     final static String GET_SNO = "select sno from payment order by sno desc limit 1";

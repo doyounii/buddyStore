@@ -39,6 +39,7 @@ public class AddPaymentProCtrl extends HttpServlet {
         serv.setAmount(Integer.parseInt(request.getParameter("amount")));
         int sprice = (int) Double.parseDouble(request.getParameter("sprice"));
         serv.setSprice(sprice);
+        serv.setSno(cnt1);
 
         int cnt2 = payDAO.addServe(serv);
 
