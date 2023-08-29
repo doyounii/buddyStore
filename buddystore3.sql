@@ -205,7 +205,6 @@ select * from notice;
 select * from product;
 select * from adminDelivery;
 commit;
-
 select pno, imgsrc1, imgsrc2, imgsrc3 from product;
 select a.pno, sum(a.amount) as amount from serve a group by pno order by amount desc limit 1;
 select a.pno from serve a group by pno order by amount desc limit 1;
@@ -215,8 +214,10 @@ select * from product where pno in (select pno from payment group by pno order b
 select b.cid, a.pname, b.amount from product a, payment b where a.pno=b.pno and b.cid='kim';
 
 create view adminDelivery as (select c.dno as dno, c.cid as cid, (select  a.pname as pname from product a, payment b where a.pno=b.pno and cid=c.cid) as pname, (select  b.amount as amount from product a, payment b where a.pno=b.pno and cid=c.cid) as amount from delivery c);
-select c.dno as dno, c.cid as cid, (select  a.pname as pname from product a, payment b where a.pno=b.pno and cid=c.cid) as pname, (select  b.amount as amount from product a, payment b where a.pno=b.pno and cid=c.cid) as amount from delivery c;
-
+select c.dno as dno, c.cid as cid , 
+(select a.pname as pname from product a, payment b where a.pno=b.pno and cid=c.cid) as pname, 
+(select  b.amount as amount from product a, payment b where a.pno=b.pno and cid=c.cid) as amount from delivery c;
+select * from delivery order by dno desc
 -- 1:1 문의 테이블 생성
 CREATE TABLE qna(
 qno serial PRIMARY KEY,
@@ -277,7 +278,7 @@ select * from receive;
 select * from serve;
 select sum(amount) from receive where pno=1 group by pno ;
 select * from payment where cid='admin';
-
+select a.pno, (a.amount-b.amount) AS amount from sel1 a, sel2 b  WHERE a.pno =1
  SELECT a.pno,
     sum(a.amount) - sum(b.amount) AS amount
    FROM receive a,
