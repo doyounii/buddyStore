@@ -76,6 +76,24 @@ public class PaymentDAO {
         return cnt;
     }
 
+    public int addServe2(Serve serv){
+        int cnt = 0;
+        DBConnect con = new PostgreCon();
+        conn = con.connect();
+        try {
+            pstmt = conn.prepareStatement(DBConnect.SERVE_INSERT_RECEIVE);
+            pstmt.setInt(1, serv.getPno());
+            pstmt.setInt(2, serv.getAmount());
+            pstmt.setInt(3, serv.getSprice());
+            cnt = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(pstmt, conn);
+        }
+        return cnt;
+    }
+
     public int getSno(){
         int sno = 0;
         DBConnect con = new PostgreCon();

@@ -23,27 +23,6 @@
 <div class="container-fluid">
     <%@ include file="../header.jsp"%>
     <div class="contents" style="min-height:100vh">
-<%--        <div id="carouselExample" class="carousel slide" style="max-height:300px;overflow:hidden;">--%>
-<%--            <div class="carousel-inner">--%>
-<%--                <div class="carousel-item active">--%>
-<%--                    <img src="${path }/images/sub_vs01.jpg" class="d-block w-100" alt="천재교과서">--%>
-<%--                </div>--%>
-<%--                <div class="carousel-item">--%>
-<%--                    <img src="${path }/images/sub_vs02.jpg" class="d-block w-100" alt="천재문제집">--%>
-<%--                </div>--%>
-<%--                <div class="carousel-item">--%>
-<%--                    <img src="${path }/images/sub_vs03.jpg" class="d-block w-100" alt="천재참고서">--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">--%>
-<%--                <span class="carousel-control-prev-icon" aria-hidden="true"></span>--%>
-<%--                <span class="visually-hidden">Previous</span>--%>
-<%--            </button>--%>
-<%--            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">--%>
-<%--                <span class="carousel-control-next-icon" aria-hidden="true"></span>--%>
-<%--                <span class="visually-hidden">Next</span>--%>
-<%--            </button>--%>
-<%--        </div>--%>
         <nav aria-label="breadcrumb container-fluid" style="padding-top:28px; border-bottom:2px solid #666;">
             <div class="container">
                 <ol class="breadcrumb justify-content-end">

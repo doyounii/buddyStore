@@ -21,5 +21,7 @@
             </ul>
         </li>
         <li class="nav-item"><a href="" class="nav-link">댓글 관리</a></li>
+        <li class="nav-item"><a href="${path2 }/AdminDeliveryList.do"  class="nav-link">배송 관리</a>
+        </li>
     </ul>
 </nav>

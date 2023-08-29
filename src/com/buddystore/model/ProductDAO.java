@@ -350,4 +350,59 @@ public class ProductDAO {
         return cnt;
     }
 
+    public Product getBestProduct(){
+        Product pro = new Product();
+        DBConnect con = new PostgreCon();
+        try {
+            conn = con.connect();
+            pstmt = conn.prepareStatement(DBConnect.PRODUCT_SELECT_BEST);
+            rs = pstmt.executeQuery();
+            if(rs.next()){
+                pro.setPno(rs.getInt("pno"));
+                pro.setCate(rs.getString("cate"));
+                pro.setProno(rs.getString("prono"));
+                pro.setPname(rs.getString("pname"));
+                pro.setPcomment(rs.getString("pcomment"));
+                pro.setPlist(rs.getString("plist"));
+                pro.setPrice(rs.getInt("price"));
+                pro.setImgSrc1(rs.getString("imgsrc1"));
+                pro.setImgSrc2(rs.getString("imgsrc2"));
+                pro.setImgSrc3(rs.getString("imgsrc3"));
+                pro.setResdate(rs.getString("resdate"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(rs, pstmt, conn);
+        }
+        return pro;
+    }
+
+    public Product getNewProduct(){
+        Product pro = new Product();
+        DBConnect con = new PostgreCon();
+        try {
+            conn = con.connect();
+            pstmt = conn.prepareStatement(DBConnect.PRODUCT_SELECT_NEW);
+            rs = pstmt.executeQuery();
+            if(rs.next()){
+                pro.setPno(rs.getInt("pno"));
+                pro.setCate(rs.getString("cate"));
+                pro.setProno(rs.getString("prono"));
+                pro.setPname(rs.getString("pname"));
+                pro.setPcomment(rs.getString("pcomment"));
+                pro.setPlist(rs.getString("plist"));
+                pro.setPrice(rs.getInt("price"));
+                pro.setImgSrc1(rs.getString("imgsrc1"));
+                pro.setImgSrc2(rs.getString("imgsrc2"));
+                pro.setImgSrc3(rs.getString("imgsrc3"));
+                pro.setResdate(rs.getString("resdate"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(rs, pstmt, conn);
+        }
+        return pro;
+    }
 }

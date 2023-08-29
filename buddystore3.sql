@@ -203,9 +203,13 @@ select * from serve;
 select * from receive;
 select * from notice;
 select * from product;
-
+select * from adminDelivery;
 commit;
 
+select b.cid, a.pname, b.amount from product a, payment b where a.pno=b.pno and b.cid='kim';
+
+create view adminDelivery as (select c.dno as dno, c.cid as cid, (select  a.pname as pname from product a, payment b where a.pno=b.pno and cid=c.cid) as pname, (select  b.amount as amount from product a, payment b where a.pno=b.pno and cid=c.cid) as amount from delivery c);
+select c.dno as dno, c.cid as cid, (select  a.pname as pname from product a, payment b where a.pno=b.pno and cid=c.cid) as pname, (select  b.amount as amount from product a, payment b where a.pno=b.pno and cid=c.cid) as amount from delivery c;
 
 -- 1:1 문의 테이블 생성
 CREATE TABLE qna(
@@ -260,6 +264,8 @@ INSERT INTO comment(qno, author, content) VALUES(12, 'admin', '테스트용 댓�
 COMMIT;
 
 select * from product;
+select * from payment;
+
 select * from inventory;
 select * from receive;
 select * from serve;
@@ -280,7 +286,7 @@ select * from payment where cid='admin';
  create view sel1 as (select pno, sum(amount) as amount from receive group by pno);
  create view sel2 as (select pno, sum(amount) as amount from serve group by pno);
  
- select a.pno, (a.amount-b.amount) AS amount from sel1 a, sel2 b  WHERE a.pno = b.pno;
+ create view inventory as (select a.pno, (a.amount-b.amount) AS amount from sel1 a, sel2 b  WHERE a.pno = b.pno);
  
  
  

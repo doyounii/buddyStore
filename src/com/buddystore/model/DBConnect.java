@@ -43,6 +43,8 @@ public interface DBConnect {
     //출고 처리 패턴
     final static String SERVE_PAYMENT = "insert into payment values (default, ?, ?, ?, ?, ?, ?, ?, '')";
     final static String SERVE_INSERT = "insert into serve values(default, ?, ?, ?, default, ?)";
+    final static String SERVE_INSERT_RECEIVE = "insert into serve values(default, ?, ?, ?, default, default)";
+
     final static String DELIVERY_INSERT = "insert into delivery values (default, ?, ?, ?, ?, '','',default,default,'','')";
     final static String CART_DELETE = "delete from cart where cartno=?";
     final static String GET_SNO = "select sno from payment order by sno desc limit 1";
@@ -55,11 +57,12 @@ public interface DBConnect {
     final static String RETURN_DELEVERY = "delete from delivery where sno=?";
 
     //배송 등록 처리
-    final static String DELIVERY_PRO = "update delivery set pcom=?, ptel=?, pstate=1, sdate=current_timestamp, rdate=?, bcode=? where dno=?";
+    final static String DELIVERY_PRO = "update delivery set pcom=?, ptel=?, pstate=1, sdate=?, rdate=?, bcode=? where dno=?";
 
     //배송 완료 처리
     final static String DELIVERY_COMPLETE = "update delivery set pstate=2 where dno=?";
 
+    final static String DELIVERY_SELECT_ALL = "select * from adminDelivery";
     final static String DELIVERY_SELECT_ONE = "select * from delivery where dno=?";
     final static String DELIVERY_SELECT_SNO = "select * from delivery where sno=?";
 

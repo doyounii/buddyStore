@@ -2,11 +2,20 @@ package com.buddystore.dto;
 
 //출고
 public class Serve {
-    private int sno;        //출고 번호
+    private int serno;  // 출고 번호
+    private int sno;        //결제번호 티폴트는 0,
     private int pno;        //출고 제품번호
     private int amount;     //출고량
     private int sprice;     //출고 가격
     private String resdate; //출고일
+
+    public int getSerno() {
+        return serno;
+    }
+
+    public void setSerno(int serno) {
+        this.serno = serno;
+    }
 
     public int getSno() {
         return sno;

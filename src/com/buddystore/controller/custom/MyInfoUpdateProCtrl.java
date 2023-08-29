@@ -43,7 +43,7 @@ public class MyInfoUpdateProCtrl extends HttpServlet {
         suc = dao.updateCustom(user);
 
         if(suc>0){
-            response.sendRedirect(request.getContextPath()+"Mypage.do?id="+id);
+            response.sendRedirect(request.getContextPath()+"admin.do?id="+id);
         } else {
             response.sendRedirect("/MyInfoUpdate.do?id="+id);
         }

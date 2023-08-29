@@ -38,7 +38,7 @@ public class AddReceiveProCtrl extends HttpServlet {
         int sprice = (int) Double.parseDouble(request.getParameter("rprice"));
         serv.setSprice(sprice);
 
-        int cnt2 = payDAO.addServe(serv);
+        int cnt2 = payDAO.addServe2(serv);
 
         if(cnt>0 && cnt2>0){
             response.sendRedirect(home+"/ProList.do");

@@ -30,12 +30,6 @@ public class MypageCtrl extends HttpServlet {
 
         request.setAttribute("cus", cus);
 
-
-        PaymentDAO payDAO = new PaymentDAO();
-        List<PaymentVO> payList = payDAO.getCidPaymentList(cid);
-
-
-        request.setAttribute("payList", payList);
         RequestDispatcher view = request.getRequestDispatcher("/custom/mypage.jsp");
         view.forward(request, response);
     }

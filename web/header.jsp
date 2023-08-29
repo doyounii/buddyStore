@@ -102,6 +102,10 @@
     .section {
         margin-top: 100px;
     }
+    .btn .btn-primary {
+        background-color: #0B7B20;
+        border-color: #0B7B20;
+    }
 </style>
 <header>
     <!-- Nav Bar 오른쪽 정렬 -->

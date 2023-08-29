@@ -1,3 +1,5 @@
+<%@ page import="com.buddystore.model.ProductDAO" %>
+<%@ page import="com.buddystore.dto.Product" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -57,7 +59,7 @@
             <p>BEST BOOK</p>
             <span>W</span><span>EE</span><span>K STORE에서 자신있게 추천드려요!</span>
             <p>강좌까지 함께 즐겨요.</p>
-            <section class="img"><img src="./images/pic.jpeg" alt="베스트셀러" class="book"></section>
+            <section class="img"><img src="${path }/storage/${bestPro.imgSrc1 }" alt="베스트셀러" class="book"></section>
             <section class="player">
                 <div class="vdo_fr">
                     <video id="video">
@@ -97,7 +99,7 @@
             <p>NEW BOOK</p>
             <span>W</span><span>EE</span><span>K STORE에서 새로운 책이 나왔어요!</span>
             <p>최신 강좌도 나왔어요.</p>
-            <section class="img"><img src="./images/pic.jpeg" alt="뉴북" class="book" ></section>
+            <section class="img"><img src="${path }/storage/${newPro.imgSrc1 }" alt="뉴북" class="book" ></section>
             <section class="player2">
                 <div class="vdo_fr2">
                     <video id="video2">
