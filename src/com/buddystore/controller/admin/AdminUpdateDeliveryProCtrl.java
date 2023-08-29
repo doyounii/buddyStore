@@ -14,16 +14,18 @@ public class AdminUpdateDeliveryProCtrl extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String sid = (String) session.getAttribute("sid");
+
+        if(!sid.equals("admin") || sid==null){
+            response.sendRedirect(request.getContextPath());
+        }
+
         Delivery del = new Delivery();
 
         del.setDno(Integer.parseInt(request.getParameter("dno")));
-        del.setSno(Integer.parseInt(request.getParameter("sno")));
-        del.setCid(request.getParameter("cid"));
-        del.setDaddr(request.getParameter("daddr"));
-        del.setCustel(request.getParameter("custel"));
         del.setPcom(request.getParameter("pcom"));
         del.setPtel(request.getParameter("ptel"));
-        del.setPstate(Integer.parseInt(request.getParameter("pstate")));
         del.setSdate(request.getParameter("sdate"));
         del.setRdate(request.getParameter("rdate"));
         del.setBcode(request.getParameter("bcode"));
@@ -31,11 +33,10 @@ public class AdminUpdateDeliveryProCtrl extends HttpServlet {
         DeliveryDAO dao = new DeliveryDAO();
         int cnt = dao.deliveryPro(del);
 
-
         PrintWriter out = response.getWriter();
 
         if(cnt>0){
-            response.sendRedirect(request.getContextPath()+"/AdminDeliveryList.do");
+            response.sendRedirect(request.getContextPath()+"/AdminDeliveryList.do?dno="+request.getParameter("dno"));
         } else {
             out.println("<script>history.go(-1);</script>");
         }

@@ -14,8 +14,8 @@
         #tb1 th { background-color: #0B7B20; color:#fff; }
         .item1 { width:10%; }
         .item2 { width:15%; }
-        .item3 { width:45%; }
-        .item4 { width:10%; }
+        .item3 { width:30%; }
+        .item4 { width:30%; }
         .item5 { width:15%; }
         #page-nation1 { width: 960px; margin:20px auto; }
     </style>
@@ -101,8 +101,8 @@
                         <tr>
                             <th class="item1">배송 번호</th>
                             <th class="item2">구매자</th>
-                            <th class="item3">구매 상품명</th>
-                            <th class="item4">구매 수량</th>
+                            <th class="item3">주문일</th>
+                            <th class="item4">연락처</th>
                             <th class="item5">배송 관리</th>
                         </tr>
                         </thead>
@@ -111,8 +111,8 @@
                             <tr>
                                     <td class="item1">${del.dno }</td>
                                     <td class="item2">${del.cid }</td>
-                                    <td class="item3">${del.pname }</td>
-                                    <td class="item4">${del.amount }</td>
+                                    <td class="item3">${del.sdate }</td>
+                                    <td class="item4">${del.custel }</td>
                                     <td class="item5">
                                         <a href="${path }/AdminGetDelivery.do?dno=${del.dno }" class="btn btn-primary">배송 관리</a>
                                     </td>

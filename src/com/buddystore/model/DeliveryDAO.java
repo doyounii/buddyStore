@@ -102,7 +102,6 @@ public class DeliveryDAO {
         conn = con.connect();
         try {
             pstmt = conn.prepareStatement(DBConnect.DELIVERY_COMPLETE);
-            pstmt.setInt(1, 2);
             pstmt.setInt(2, dno);
             cnt = pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -122,10 +121,9 @@ public class DeliveryDAO {
             pstmt = conn.prepareStatement(DBConnect.DELIVERY_PRO);
             pstmt.setString(1, del.getPcom());
             pstmt.setString(2, del.getPtel());
-            pstmt.setString(3, del.getSdate());
-            pstmt.setString(4, del.getRdate());
-            pstmt.setString(5, del.getBcode());
-            pstmt.setInt(6, del.getDno());
+            pstmt.setString(3, del.getRdate());
+            pstmt.setString(4, del.getBcode());
+            pstmt.setInt(5, del.getDno());
             cnt = pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -138,17 +136,25 @@ public class DeliveryDAO {
     //배송 리스트 전체 불러오기
     public List<Delivery> getDeliveryList(){
         List<Delivery> delList = new ArrayList<>();
+        int cnt = 0;
         DBConnect con = new PostgreCon();
         conn = con.connect();
         try {
-            pstmt = conn.prepareStatement(DBConnect.DELIVERY_SELECT_ALL);
+            pstmt = conn.prepareStatement(DBConnect.DELIVERY_SELECT_LIST);
             rs = pstmt.executeQuery();
             while(rs.next()){
                 Delivery del = new Delivery();
                 del.setDno(rs.getInt("dno"));
+                del.setSno(rs.getInt("sno"));
                 del.setCid(rs.getString("cid"));
-                del.setPname(rs.getString("pname"));
-                del.setAmount(rs.getInt("amount"));
+                del.setDaddr(rs.getString("daddr"));
+                del.setCustel(rs.getString("custel"));
+                del.setPcom(rs.getString("pcom"));
+                del.setPtel(rs.getString("ptel"));
+                del.setPstate(rs.getInt("pstate"));
+                del.setSdate(rs.getString("sdate"));
+                del.setRdate(rs.getString("rdate"));
+                del.setBcode(rs.getString("bcode"));
                 delList.add(del);
             }
         } catch (SQLException e) {
@@ -158,4 +164,21 @@ public class DeliveryDAO {
         }
         return delList;
     }
+    //구매완료 처리
+    public int salesComplete(int dno){
+        int cnt = 0;
+        DBConnect con = new PostgreCon();
+        conn = con.connect();
+        try {
+            pstmt = conn.prepareStatement(DBConnect.DELIVERY_SALES_COMPLETE);
+            pstmt.setInt(1, dno);
+            cnt = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(pstmt, conn);
+        }
+        return cnt;
+    }
+
 }

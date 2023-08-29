@@ -31,56 +31,78 @@
                 </ol>
             </div>
         </nav>
-        <h2 class="title">결제 내역</h2>
-        <p class="msg">${msg }</p>
+        <h2 class="title">배송 조회</h2>
         <div class="container">
             <div class="box_wrap">
                 <table class="table table-secondary" id="tb1">
-                    <thead>
-                    <tr>
-                        <th class="item1">연번</th>
-                        <th class="item2">결제상품</th>
-                        <th class="item3">결제정보</th>
-                        <th class="item4">작업</th>
-                    </tr>
-                    </thead>
                     <tbody>
-                    <c:forEach var="pay" items="${payList }" varStatus="status">
-                        <tr>
-                            <td class="item1">${status.count }</td>
-                            <td class="item2">
-                                <span title="${pay.pno }">${pay.pname }</span>
-                            </td>
-                            <td class="item3">
-                                <p>구매 수량 : ${pay.amount }</p>
-                                <p>결제 방법 : ${pay.pmethod }</p>
-                                <p>결제 대행 : ${pay.pcom }</p>
-                                <p>결제 번호 : ${pay.cnum }</p>
-                                <p>결제 금액 : ${pay.payprice }</p>
-                            </td>
-                            <td class="item4">
-                                <c:if test="${pay.pstate==0}">
-                                    <a href="${path }/ReturnPayment.do?sno=${pay.sno }" class="btn btn-primary">반품 요청</a>
-                                </c:if>
-                                <c:if test="${pay.pstate==1}">
-                                    <a href="${path }/Delivery.do?sno=${pay.sno }" class="btn btn-primary">배송 조회</a>
-                                </c:if>
-                                <c:if test="${pay.pstate==2}">
-                                    <span class="btn btn-primary">배송 완료</span>
-                                    <a href="${path }/AddReview.do?sno=${pay.sno }" class="btn btn-primary">구매 결정</a>
-                                </c:if>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                    <c:if test="${empty payList}">
-                        <tr>
-                            <td colspan="4">결제된 상품이 존재하지 않습니다.</td>
-                        </tr>
-                    </c:if>
+                    <tr>
+                        <th>배송 번호</th>
+                        <td>${del.dno }
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>주문자</th>
+                        <td> ${del.cid } / ${del.custel }</td>
+                    </tr>
+                    <tr>
+                        <th>주문일시</th>
+                        <td>${del.sdate }</td>
+                    </tr>
+                    <tr>
+                        <th>배송 상태</th>
+                        <td>
+                            <c:if test="${del.pstate == 0}">
+                                <p>배송 전</p>
+                            </c:if>
+                            <c:if test="${del.pstate == 1}">
+                                <p>배송중</p>
+                            </c:if>
+                            <c:if test="${del.pstate == 2}">
+                                <p>배송완료</p>
+                            </c:if>
+                            <c:if test="${del.pstate == 3}">
+                                <p>구매완료</p>
+                            </c:if>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>배송사</th>
+                        <td>
+                            ${del.pcom }
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>배송처 연락처</th>
+                        <td>
+                            ${del.ptel }
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>배송 시작일</th>
+                        <td>
+                            ${del.sdate }
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>배송 완료일</th>
+                        <td>
+                            ${del.rdate }
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>송장 번호</th>
+                        <td>
+                            ${del.bcode }
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
+                <div class="btn-group">
+                    <a href="${path }/PaymentList.do" class="btn btn-primary">결제 목록</a>
+                </div>
+
             </div>
-        </div>
     </div>
     <%@ include file="../footer.jsp" %>
 </div>

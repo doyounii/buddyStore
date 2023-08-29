@@ -16,13 +16,12 @@ import java.io.IOException;
 public class DeliveryCtrl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        int sno = (int) session.getAttribute("sno");
+        int sno = Integer.parseInt(request.getParameter("sno"));
 
         DeliveryDAO dao = new DeliveryDAO();
-        Delivery delivery = dao.getBySnoDelivery(sno);
+        Delivery del = dao.getBySnoDelivery(sno);
 
-        request.setAttribute("delivery", delivery);
+        request.setAttribute("del", del);
         RequestDispatcher view = request.getRequestDispatcher("/custom/delivery.jsp");
         view.forward(request, response);
     }

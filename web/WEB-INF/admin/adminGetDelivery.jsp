@@ -36,75 +36,116 @@
         <div class="container">
             <div class="box_wrap">
                 <form action="${path }/AdminUpdateDeliveryPro.do" method="post">
-                <table class="table table-secondary" id="tb1">
-                    <tbody>
-                    <tr>
-                        <th>배송 번호</th>
-                        <td>
-                            <input type="text" name="dno" id="dno" class="indata" value="${del.dno }" readonly required/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>결제 번호</th>
-                        <td>
-                            <input type="text" name="sno" id="sno" class="indata" value="${del.sno }" readonly required/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>주문자</th>
-                        <td>
-                            <input type="text" name="cid" id="cid" class="indata" value="${del.cid }" readonly required/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>배송지</th>
-                        <td>
-                            <input type="text" name="daddr" id="daddr" class="indata" value="${del.daddr }" readonly required/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>연락처</th>
-                        <td>
-                            <input type="text" name="custel" id="custel" class="indata" value="${del.custel }" readonly required/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>배송회사</th>
-                        <td>
-                            <input type="text" name="pcom" id="pcom" class="indata" value="${del.pcom }" required/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>배송기사 연락처</th>
-                        <td>
-                            <input type="text" name="ptel" id="ptel" class="indata" value="${del.ptel }" required/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>처리 상태</th>
-                        <td>
-                            <input type="text" name="pstate" id="pstate" class="indata" value="${del.pstate }"  required/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>배송 시작일</th>
-                        <td>
-                            <input type="text" name="sdate" id="sdate" class="indata" value="${del.sdate }" required/>
-                            <input type="hidden" value="${del.rdate }" name="rdate" id="rdate" class="indata"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>화물코드</th>
-                        <td>
-                            <input type="text" name="bcode" id="bcode" class="indata" value="${del.bcode }" required/>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <div class="btn-group">
-                    <input type="submit" value="로그인" class="btn btn-primary">
-                    <a href="${path }" class="btn btn-primary">메인으로</a>
-                </div>
+                    <table class="table table-secondary" id="tb1">
+                        <tbody>
+                        <tr>
+                            <th>배송 번호</th>
+                            <td>${del.dno }
+                                <input type="hidden" name="dno" id="dno" value="${del.dno }">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>배송 상품</th>
+                            <td><a href="${path }/Payment.do?sno=${del.sno }" title="${pro.pname }">${pro.pno }</a></td>
+                        </tr>
+                        <tr>
+                            <th>주문자</th>
+                            <td><a href="${path }/AdminCustom.do?cid=${cus.id }" title="${cus.name }">${del.cid }</a> / ${del.custel }</td>
+                        </tr>
+                        <tr>
+                            <th>주문일시</th>
+                            <td>${del.sdate }</td>
+                        </tr>
+                        <tr>
+                            <th>배송 상태</th>
+                            <td>
+                                <c:if test="${del.pstate == 0}">
+                                    <p>배송 전</p>
+                                </c:if>
+                                <c:if test="${del.pstate == 1}">
+                                    <p>배송중</p>
+                                </c:if>
+                                <c:if test="${del.pstate == 2}">
+                                    <p>배송완료</p>
+                                </c:if>
+                                <c:if test="${del.pstate == 3}">
+                                    <p>구매완료</p>
+                                </c:if>
+                                <c:if test="${del.pstate != 3}">
+                                    <select name="pstate" id="pstate">
+                                        <option value="0">배송전</option>
+                                        <option value="1">배송중</option>
+                                        <option value="2">배송완료</option>
+                                        <option value="3">구매완료</option>
+                                    </select>
+                                </c:if>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>배송사</th>
+                            <td>
+                                <c:if test="${empty del.pcom }">
+                                    <input type="text" name="pcom" id="pcom" class="form-control">
+                                </c:if>
+                                <c:if test="${!empty del.pcom }">
+                                    <input type="text" name="pcom" id="pcom" value="${del.pcom }" class="form-control">
+                                </c:if>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>배송처 연락처</th>
+                            <td>
+                                <c:if test="${empty del.ptel }">
+                                    <input type="tel" name="ptel" id="ptel" class="form-control">
+                                </c:if>
+                                <c:if test="${!empty del.ptel }">
+                                    <input type="tel" name="ptel" id="ptel" value="${del.ptel }" class="form-control">
+                                </c:if>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>배송 시작일</th>
+                            <td>
+                                <c:if test="${empty del.sdate}">
+                                    <input type="date" name="sdate" id="sdate" class="form-control">
+                                </c:if>
+                                <c:if test="${!empty del.sdate}">
+                                    <input type="date" name="sdate" value="${del.sdate }" id="sdate" class="form-control">
+                                </c:if>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>배송 완료일</th>
+                            <td>
+                                <c:if test="${empty del.rdate}">
+                                    <input type="date" name="rdate" id="rdate" class="form-control">
+                                </c:if>
+                                <c:if test="${!empty del.sdate}">
+                                    <input type="date" name="rdate" value="${del.rdate }" id="sdate" class="form-control">
+                                </c:if>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>송장 번호</th>
+                            <td>
+                                <c:if test="${empty del.bcode }">
+                                    <input type="text" name="bcode" id="bcode" class="form-control">
+                                </c:if>
+                                <c:if test="${!empty del.bcode }">
+                                    <input type="text" name="bcode" id="bcode" value="${del.bcode }" class="form-control">
+                                </c:if>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="btn-group">
+                        <input type="submit" value="배송 내용 변경" class="btn btn-primary">
+                        <a href="${path }/CompleteDelivery.do?dno=${del.dno }" class="btn btn-primary">배송 완료 처리</a>
+                        <a href="${path }/AdminSalesComplete.do?dno=${del.dno }" class="btn btn-primary">구매 완료 처리</a>
+                        <a href="${path }/AdminDeliveryList.do" class="btn btn-primary">배송 목록</a>
+                        <a href="${path }/ReturnPayment.do?sno=${del.sno }" class="btn btn-primary">반품 처리</a>
+                    </div>
                 </form>
             </div>
         </div>

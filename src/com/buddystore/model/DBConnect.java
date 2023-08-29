@@ -57,14 +57,15 @@ public interface DBConnect {
     final static String RETURN_DELEVERY = "delete from delivery where sno=?";
 
     //배송 등록 처리
-    final static String DELIVERY_PRO = "update delivery set pcom=?, ptel=?, pstate=1, sdate=?, rdate=?, bcode=? where dno=?";
+    final static String DELIVERY_PRO = "update delivery set pcom=?, ptel=?, pstate=1, rdate=?, bcode=? where dno=?";
 
     //배송 완료 처리
     final static String DELIVERY_COMPLETE = "update delivery set pstate=2 where dno=?";
-
     final static String DELIVERY_SELECT_ALL = "select * from adminDelivery";
+    final static String DELIVERY_SELECT_LIST = "select * from delivery order by dno desc";
     final static String DELIVERY_SELECT_ONE = "select * from delivery where dno=?";
     final static String DELIVERY_SELECT_SNO = "select * from delivery where sno=?";
+    final static String DELIVERY_SALES_COMPLETE = "update delivery set pstate=3 where dno=?";
 
     //재고 조회
     final static String INVENTORY_SELECT_ALL = "select * from inventory order by pno desc";
