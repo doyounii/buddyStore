@@ -126,7 +126,7 @@ custel varchar(13) not null,
 pcom varchar(100),
 ptel varchar(13),
 pstate integer default 0,	
-sdate timestamp default current_timestamp,
+sdate varchar(13),
 rdate varchar(13),
 bcode varchar(30)	
 );
@@ -206,6 +206,12 @@ select * from product;
 select * from adminDelivery;
 commit;
 
+select pno, imgsrc1, imgsrc2, imgsrc3 from product;
+select a.pno, sum(a.amount) as amount from serve a group by pno order by amount desc limit 1;
+select a.pno from serve a group by pno order by amount desc limit 1;
+
+select pno, pname, imgsrc1, imgsrc2, imgsrc3 from product where pno in (select pno from payment group by pno order by sum(amount) desc limit 1);
+select * from product where pno in (select pno from payment group by pno order by sum(amount) desc limit 1)
 select b.cid, a.pname, b.amount from product a, payment b where a.pno=b.pno and b.cid='kim';
 
 create view adminDelivery as (select c.dno as dno, c.cid as cid, (select  a.pname as pname from product a, payment b where a.pno=b.pno and cid=c.cid) as pname, (select  b.amount as amount from product a, payment b where a.pno=b.pno and cid=c.cid) as amount from delivery c);
