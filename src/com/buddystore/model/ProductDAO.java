@@ -19,7 +19,7 @@ public class ProductDAO {
 
     public List<Product> getProductList(){
         List<Product> proList = new ArrayList<>();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         try {
             conn = con.connect();
             pstmt = conn.prepareStatement(DBConnect.PRODUCT_SELECT_ALL);
@@ -49,7 +49,7 @@ public class ProductDAO {
 
     public List<Product> getNewProductList(){
         List<Product> proList = new ArrayList<>();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         try {
             conn = con.connect();
             pstmt = conn.prepareStatement(DBConnect.PRODUCT_SELECT_NEW);
@@ -79,7 +79,7 @@ public class ProductDAO {
 
     public List<Product> getBestProductList(){
         List<Product> proList = new ArrayList<>();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         try {
             conn = con.connect();
             pstmt = conn.prepareStatement(DBConnect.PRODUCT_SELECT_BEST);
@@ -109,7 +109,7 @@ public class ProductDAO {
 
     public List<Product> getCateProductList(String cate){
         List<Product> proList = new ArrayList<>();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         try {
             conn = con.connect();
             pstmt = conn.prepareStatement(DBConnect.PRODUCT_SELECT_CATE);
@@ -140,7 +140,7 @@ public class ProductDAO {
 
     public Product getProduct(int pno){
         Product pro = new Product();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         try {
             conn = con.connect();
             pstmt = conn.prepareStatement(DBConnect.PRODUCT_SELECT_ONE);
@@ -169,7 +169,7 @@ public class ProductDAO {
 
     public int addProduct(Product pro){
         int cnt =0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         try {
             pstmt = conn.prepareStatement(DBConnect.PRODUCT_INSERT);
@@ -188,7 +188,7 @@ public class ProductDAO {
             con.close(pstmt, conn);
         }
 
-        con = new PostgreCon();
+        con = new MariaDBCon();
         conn = con.connect();
         try {
             pstmt = conn.prepareStatement(DBConnect.PRODUCT_INSERT_UPDATE);
@@ -203,7 +203,7 @@ public class ProductDAO {
     public int insertRecieveAndServe(int pno) {
         System.out.println(pno+"번호입니동");
         int cnt =0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         try {
             pstmt = conn.prepareStatement(DBConnect.RECEIVE_INSERT);
@@ -217,7 +217,7 @@ public class ProductDAO {
             con.close(pstmt, conn);
         }
 
-        con = new PostgreCon();
+        con = new MariaDBCon();
         conn = con.connect();
         try {
             pstmt = conn.prepareStatement(DBConnect.SERVE_INSERT);
@@ -235,7 +235,7 @@ public class ProductDAO {
 
     public int updateProduct(Product pro){
         int cnt =0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
 
         try {
@@ -259,7 +259,7 @@ public class ProductDAO {
 
     public int delProduct(int pno){
         int cnt =0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         try {
             pstmt = conn.prepareStatement(DBConnect.PRODUCT_DELETE);
@@ -275,7 +275,7 @@ public class ProductDAO {
 
     public List<Category> getCategoryList(){
         List<Category> cateList = new ArrayList<Category>();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         try {
             pstmt = conn.prepareStatement(DBConnect.CATEGORY_LOAD);
@@ -296,7 +296,7 @@ public class ProductDAO {
 
 //    public int getAmount(int pno){
 //        int amount = 0;
-//        DBConnect con = new PostgreCon();
+//        DBConnect con = new MariaDBCon();
 //        try {
 //            conn = con.connect();
 //            pstmt = conn.prepareStatement(DBConnect.INVENTORY_SELECT_ONE);
@@ -315,7 +315,7 @@ public class ProductDAO {
 
     public int getAmount(int pno){
         int amount = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         try {
             conn = con.connect();
             pstmt = conn.prepareStatement(DBConnect.INVENTORY_SELECT_ONE);
@@ -334,7 +334,7 @@ public class ProductDAO {
 
     public int addReceive(Receive rec){
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         try {
             pstmt = conn.prepareStatement(DBConnect.RECEIVE_INSERT);
@@ -352,7 +352,7 @@ public class ProductDAO {
 
     public Product getBestProduct(){
         Product pro = new Product();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         try {
             conn = con.connect();
             pstmt = conn.prepareStatement(DBConnect.PRODUCT_SELECT_BEST);
@@ -380,7 +380,7 @@ public class ProductDAO {
 
     public Product getNewProduct(){
         Product pro = new Product();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         try {
             conn = con.connect();
             pstmt = conn.prepareStatement(DBConnect.PRODUCT_SELECT_NEW);

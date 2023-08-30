@@ -15,7 +15,7 @@ public class DaoTest1 {
 
     public static void main(String[] args) {
         List<Notice> notiList = new ArrayList<>();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         if(conn!=null){
             System.out.println("PostgreSQL 연결 성공");

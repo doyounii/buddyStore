@@ -18,7 +18,7 @@ public class PaymentDAO {
     //결제 처리(PaymentDAO.addPayment(pay))
     public int addPayment(Payment pay){
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         try {
             pstmt = conn.prepareStatement(DBConnect.SERVE_PAYMENT);
@@ -36,7 +36,7 @@ public class PaymentDAO {
         }
 
         try {
-            String sql = "SELECT * FROM payment order by sno desc limit 1";
+            String sql = "select * from (SELECT * FROM payment order by sno desc limit 1) as payment";
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();
             if(rs.next()) {
@@ -59,7 +59,7 @@ public class PaymentDAO {
     //출고 처리(PaymentDAO.addServe(serv))
     public int addServe(Serve serv){
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         try {
             pstmt = conn.prepareStatement(DBConnect.SERVE_INSERT);
@@ -75,28 +75,9 @@ public class PaymentDAO {
         }
         return cnt;
     }
-
-    public int addServe2(Serve serv){
-        int cnt = 0;
-        DBConnect con = new PostgreCon();
-        conn = con.connect();
-        try {
-            pstmt = conn.prepareStatement(DBConnect.SERVE_INSERT_RECEIVE);
-            pstmt.setInt(1, serv.getPno());
-            pstmt.setInt(2, serv.getAmount());
-            pstmt.setInt(3, serv.getSprice());
-            cnt = pstmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            con.close(pstmt, conn);
-        }
-        return cnt;
-    }
-
     public int getSno(){
         int sno = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         try {
             pstmt = conn.prepareStatement(DBConnect.GET_SNO);
@@ -114,7 +95,7 @@ public class PaymentDAO {
 
     public int returnPayment(int sno, int pno, int amount, String cid) {
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         try {
             conn.setAutoCommit(false);
@@ -158,7 +139,7 @@ public class PaymentDAO {
 
     public Payment getPayment(int sno){
         Payment pay = new Payment();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         try {
             pstmt = conn.prepareStatement(DBConnect.PAYMENT_SELECT_ONE);
@@ -180,7 +161,7 @@ public class PaymentDAO {
 
     public List<PaymentVO> getCidPaymentList(String cid){
         List<PaymentVO> payList = new ArrayList<>();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         try {
             pstmt = conn.prepareStatement(DBConnect.PAYMENT_SELECT_CID);
@@ -218,5 +199,23 @@ public class PaymentDAO {
         DeliveryDAO dao = new DeliveryDAO();
         Delivery del  = dao.getBySnoDelivery(sno);
         return del.getPstate();
+    }
+
+    public int addServe2(Serve serv) {
+        int cnt = 0;
+        DBConnect con = new MariaDBCon();
+        conn = con.connect();
+        try {
+            pstmt = conn.prepareStatement(DBConnect.SERVE_INSERT_RECEIVE);
+            pstmt.setInt(1, serv.getPno());
+            pstmt.setInt(2, serv.getAmount());
+            pstmt.setInt(3, serv.getSprice());
+            cnt = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(pstmt, conn);
+        }
+        return cnt;
     }
 }

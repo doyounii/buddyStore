@@ -149,6 +149,7 @@
                         <li class="nav-item"><a href="#" class="nav-link">찜목록</a></li>
                         <li class="nav-item"><a href="#" class="nav-link">장바구니</a></li>
                         <li class="nav-item"><a href="${path1 }/Mypage.do" class="nav-link">마이페이지</a></li>
+                        <li class="nav-item"><a href="${path1 }/PaymentList.do" class="nav-link">주문 내역</a></li>
                         <li class="nav-item"><a href="${path1 }/Logout.do" class="nav-link">로그아웃</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

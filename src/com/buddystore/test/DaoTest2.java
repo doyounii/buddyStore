@@ -2,7 +2,7 @@ package com.buddystore.test;
 
 import com.buddystore.dto.Notice;
 import com.buddystore.model.DBConnect;
-import com.buddystore.model.PostgreCon;
+import com.buddystore.model.MariaDBCon;
 
 import java.sql.*;
 
@@ -14,7 +14,7 @@ public class DaoTest2 {
 
     public static void main(String[] args) {
         Notice noti = new Notice();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         if(conn!=null){
             System.out.println("PostgreSQL 연결 성공");

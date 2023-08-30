@@ -16,7 +16,7 @@ public class NoticeDAO {
 
     public List<Notice> getNoticeList(){
         List<Notice> notiList = new ArrayList<>();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         try {
             conn = con.connect();
             pstmt = conn.prepareStatement(DBConnect.NOTICE_SELECT_ALL);
@@ -40,7 +40,7 @@ public class NoticeDAO {
 
     public List<Notice> getNoticeList(int no){
         List<Notice> notiList = new ArrayList<>();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         try {
             conn = con.connect();
             pstmt = conn.prepareStatement(DBConnect.NOTICE_SELECT_RANGE);
@@ -65,7 +65,7 @@ public class NoticeDAO {
 
     public Notice getNotice(int no){
         Notice noti = new Notice();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         if(conn!=null){
             System.out.println("PostgreSQL 연결 성공");
@@ -93,7 +93,7 @@ public class NoticeDAO {
 
     public int addNotice(Notice noti){
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         try {
             pstmt = conn.prepareStatement(DBConnect.NOTICE_INSERT);
@@ -110,7 +110,7 @@ public class NoticeDAO {
 
     public int updateNotice(Notice noti){
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         if(conn!=null){
             System.out.println("PostgreSQL 연결 성공");
@@ -133,7 +133,7 @@ public class NoticeDAO {
 
     public int deleteNotice(int no){
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         if(conn!=null){
             System.out.println("PostgreSQL 연결 성공");
@@ -154,7 +154,7 @@ public class NoticeDAO {
 
     public int getCount(){
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         if(conn!=null){
             System.out.println("PostgreSQL 연결 성공");
@@ -176,7 +176,7 @@ public class NoticeDAO {
 
     public int getCount(String searchType, String kwd){
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         if(conn!=null){
             System.out.println("PostgreSQL 연결 성공");
@@ -208,7 +208,7 @@ public class NoticeDAO {
 
     public List<Notice> getNoticeList(String searchType, String kwd, int no) {
         List<Notice> notiList = new ArrayList<>();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         try {
             conn = con.connect();
             if(searchType.equals("title")) {

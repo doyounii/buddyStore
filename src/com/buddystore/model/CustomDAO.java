@@ -24,7 +24,7 @@ public class CustomDAO {
 
     public Custom getCustom(String id){
         Custom cus = new Custom();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         try {
             conn = con.connect();
             pstmt = conn.prepareStatement(DBConnect.CUSTOM_SELECT_ONE);
@@ -51,7 +51,7 @@ public class CustomDAO {
 
     public boolean login(String id, String pw) {
         boolean pass = false;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         String qpw = "";
 
         try {
@@ -83,7 +83,7 @@ public class CustomDAO {
 
     public boolean idCheck(String id){
         Custom cus = new Custom();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         boolean pass = false;
         try {
             conn = con.connect();
@@ -105,7 +105,7 @@ public class CustomDAO {
 
     public int addCustom(Custom user) {
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         try {
             conn = con.connect();
             System.out.println(user.toString());
@@ -128,7 +128,7 @@ public class CustomDAO {
 
     public int updateCustom(Custom user) {
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         try {
             conn = con.connect();
             pstmt = conn.prepareStatement(DBConnect.CUSTOM_UPDATE);
@@ -147,7 +147,7 @@ public class CustomDAO {
 
     public int deleteCustom(String id){
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         try {
             conn = con.connect();
             pstmt = conn.prepareStatement(DBConnect.CUSTOM_DELETE);

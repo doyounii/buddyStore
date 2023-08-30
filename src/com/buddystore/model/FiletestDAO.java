@@ -17,7 +17,7 @@ public class FiletestDAO {
 
     public int fileUploadTest(Filetest file){
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         String sql = "insert into filetest values (?,?,?,?)";
         try {
             conn = con.connect();
@@ -37,7 +37,7 @@ public class FiletestDAO {
 
     public List<Filetest> getFileTestList(){
         List<Filetest> fileList = new ArrayList<>();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         String sql = "select * from filetest";
         try {
             conn = con.connect();
@@ -61,7 +61,7 @@ public class FiletestDAO {
 
     public int fileUploadTest2(Filetest2 file){
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         String sql = "insert into filetest2 values (?,?,?,?,?,?)";
         try {
             conn = con.connect();
@@ -83,7 +83,7 @@ public class FiletestDAO {
 
     public List<Filetest2> getFileTestList2(){
         List<Filetest2> fileList = new ArrayList<>();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         String sql = "select * from filetest2";
         try {
             conn = con.connect();

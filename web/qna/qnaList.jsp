@@ -18,6 +18,13 @@
     .item4 { width:10%; }
     #page-nation1 { width: 960px; margin:20px auto; }
     </style>
+    <style>
+        .btn_group { clear:both; width:800px; margin:20px auto; }
+        .btn_group:after { content:""; display:block; width:100%; clear: both; }
+        .btn_group p {text-align: center;   line-height:3.6; }
+    </style>
+    <link rel="stylesheet" href="../js/jquery.dataTables.css">
+    <script src="../js/jquery.dataTables.js"></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -33,7 +40,6 @@
             </div>
         </nav>
         <h2 class="title">QNA 목록</h2>
-        <p class="msg">${msg }</p>
         <div class="container">
             <div class="box_wrap">
                 <div class="form-wrap">
@@ -55,7 +61,8 @@
                     <tr>
                         <th class="item1">연번</th>
                         <th class="item2">제목</th>
-                        <th class="item3">작성일</th>
+                        <th class="item3">작성자</th>
+                        <th class="item4">작성일</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -63,9 +70,17 @@
                     <tr>
                         <td class="item1">${qna.qno }</td>
                         <td class="item2">
-                            <a href="${path }/Qna.do?qno=${qna.qno }">${qna.title }</a>
+                            <c:if test="${qna.lev == 0}">
+                                <a href="${path }/Qna.do?qno=${qna.qno }&lev=${qna.lev }">${qna.title }</a>
+                            </c:if>
+                            <c:if test="${qna.lev == 1}">
+                                <a href="${path }/Qna.do?qno=${qna.qno }&lev=${qna.lev }">
+                                    <img src="../images/icon_reply.png" alt="[답변]">${qna.title }
+                                </a>
+                            </c:if>
                         </td>
-                        <td class="item3">
+                        <td class="item3">${qna.author }</td>
+                        <td class="item4">
                             <fmt:parseDate value="${qna.resdate }}" var="resdate" pattern="yyyy-MM-dd HH:mm:ss" />
                             <fmt:formatDate value="${resdate}" pattern="yyyy-MM-dd" />
                         </td>
@@ -118,7 +133,7 @@
                 <hr>
                 <c:if test="${!empty sid}">
                 <div class="container">
-                    <a href="${path }/AddQna.do" class="btn btn-primary" style="background-color: #0B7B20">QNA 등록</a>
+                    <a href="${path }/AddQna.do?lev=0&par=0" class="btn btn-primary" style="background-color: #0B7B20">QNA 등록</a>
                 </div>
                 </c:if>
             </div>

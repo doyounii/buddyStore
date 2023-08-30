@@ -16,31 +16,36 @@ public class QnaDAO {
 
     public List<Qna> getQnaList(){
         List<Qna> QnaList = new ArrayList<>();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
+
+        conn = con.connect();
         try {
-            conn = con.connect();
             pstmt = conn.prepareStatement(DBConnect.QNA_SELECT_ALL);
             rs = pstmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 Qna qna = new Qna();
                 qna.setQno(rs.getInt("qno"));
                 qna.setTitle(rs.getString("title"));
                 qna.setContent(rs.getString("content"));
-                qna.setResdate(rs.getString("resdate"));
                 qna.setAuthor(rs.getString("author"));
+                qna.setResdate(rs.getString("resdate"));
                 qna.setCnt(rs.getInt("cnt"));
+                qna.setLev(rs.getInt("lev"));
+                qna.setPar(rs.getInt("par"));
+                qna.setName(rs.getString("name"));
                 QnaList.add(qna);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        } finally {
+        }
+        finally {
             con.close(rs, pstmt, conn);
         }
         return QnaList;
     }
     public List<Qna> getQnaList(int qno){
         List<Qna> QnaList = new ArrayList<>();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         try {
             conn = con.connect();
             pstmt = conn.prepareStatement(DBConnect.QNA_SELECT_RANGE);
@@ -54,6 +59,8 @@ public class QnaDAO {
                 qna.setResdate(rs.getString("resdate"));
                 qna.setAuthor(rs.getString("author"));
                 qna.setCnt(rs.getInt("cnt"));
+                qna.setLev(rs.getInt("lev"));
+                qna.setPar(rs.getInt("par"));
                 QnaList.add(qna);
             }
         } catch (SQLException e) {
@@ -66,7 +73,7 @@ public class QnaDAO {
 
     public Qna getQna(int qno){
         Qna qna = new Qna();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         if(conn!=null){
             System.out.println("PostgreSQL 연결 성공");
@@ -83,6 +90,8 @@ public class QnaDAO {
                 qna.setContent(rs.getString("content"));
                 qna.setResdate(rs.getString("resdate"));
                 qna.setAuthor(rs.getString("author"));
+                qna.setQno(rs.getInt("lev"));
+                qna.setQno(rs.getInt("par"));
                 qna.setCnt(rs.getInt("cnt"));
             }
         } catch (SQLException e) {
@@ -95,7 +104,7 @@ public class QnaDAO {
 
     public int addQna(Qna qna){
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         try {
             pstmt = conn.prepareStatement(DBConnect.QNA_INSERT);
@@ -116,7 +125,7 @@ public class QnaDAO {
 
     public int updateQna(Qna qna){
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         if(conn!=null){
             System.out.println("PostgreSQL 연결 성공");
@@ -140,7 +149,7 @@ public class QnaDAO {
 
     public int deleteQna(int qno, int lev){
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         if(conn!=null){
             System.out.println("PostgreSQL 연결 성공");
@@ -166,7 +175,7 @@ public class QnaDAO {
 
     public int getCount(){
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         if(conn!=null){
             System.out.println("PostgreSQL 연결 성공");
@@ -188,7 +197,7 @@ public class QnaDAO {
 
     public int getCount(String searchType, String kwd){
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         if(conn!=null){
             System.out.println("PostgreSQL 연결 성공");
@@ -220,7 +229,7 @@ public class QnaDAO {
 
     public List<Qna> getQnaList(String searchType, String kwd, int qno) {
         List<Qna> qnaList = new ArrayList<>();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         try {
             conn = con.connect();
             if(searchType.equals("title")) {
@@ -259,4 +268,5 @@ public class QnaDAO {
         int startPost = 0;
         return startPost;
     }
+
 }

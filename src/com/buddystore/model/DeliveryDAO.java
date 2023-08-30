@@ -18,7 +18,7 @@ public class DeliveryDAO {
     //배송 등록(DeliveryDAO.addDelivery(del))
     public int addDelivery(Delivery del){
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         try {
             pstmt = conn.prepareStatement(DBConnect.DELIVERY_INSERT);
@@ -38,7 +38,7 @@ public class DeliveryDAO {
     //결제번호를 통한 배송정보 조회
     public Delivery getBySnoDelivery(int sno){
         Delivery del = new Delivery();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         try {
             pstmt = conn.prepareStatement(DBConnect.DELIVERY_SELECT_SNO);
@@ -68,7 +68,7 @@ public class DeliveryDAO {
     //배송 정보 조회
     public Delivery getDelivery(int dno){
         Delivery del = new Delivery();
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         try {
             pstmt = conn.prepareStatement(DBConnect.DELIVERY_SELECT_ONE);
@@ -98,11 +98,11 @@ public class DeliveryDAO {
     //배송 완료 처리
     public int deliveryComplete(int dno){
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         try {
             pstmt = conn.prepareStatement(DBConnect.DELIVERY_COMPLETE);
-            pstmt.setInt(2, dno);
+            pstmt.setInt(1, dno);
             cnt = pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -115,7 +115,7 @@ public class DeliveryDAO {
     //배송 송장 등록 및 배송시작
     public int deliveryPro(Delivery del){
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         try {
             pstmt = conn.prepareStatement(DBConnect.DELIVERY_PRO);
@@ -137,7 +137,7 @@ public class DeliveryDAO {
     public List<Delivery> getDeliveryList(){
         List<Delivery> delList = new ArrayList<>();
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         try {
             pstmt = conn.prepareStatement(DBConnect.DELIVERY_SELECT_LIST);
@@ -167,7 +167,7 @@ public class DeliveryDAO {
     //구매완료 처리
     public int salesComplete(int dno){
         int cnt = 0;
-        DBConnect con = new PostgreCon();
+        DBConnect con = new MariaDBCon();
         conn = con.connect();
         try {
             pstmt = conn.prepareStatement(DBConnect.DELIVERY_SALES_COMPLETE);

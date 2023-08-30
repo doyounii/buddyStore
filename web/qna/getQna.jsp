@@ -32,7 +32,12 @@
                 </ol>
             </div>
         </nav>
-        <h2 class="title">QNA 상세보기</h2>
+        <c:if test="${qna.lev == 0}">
+            <h2 class="title">QNA 상세보기</h2>
+        </c:if>
+        <c:if test="${qna.lev == 1}">
+            <h2 class="title">답변 상세보기</h2>
+        </c:if>
         <div class="container">
             <div class="box_wrap">
                 <table class="table table-secondary" id="tb1">
@@ -57,17 +62,13 @@
                         <th>작성일시</th>
                         <td>${qna.resdate }</td>
                     </tr>
-                    <tr>
-                        <th>읽은 횟수</th>
-                        <td>${qna.cnt }</td>
-                    </tr>
                     </tbody>
                 </table>
                 <div class="btn-group">
-                    <a href="${path }/QnaList.do" class="btn btn-primary" style="background-color: #0B7B20">글 목록</a>
+                    <a href="${path }/QnaList.do" class="btn btn-primary" style="background-color: #0B7B20">QNA 목록</a>
                     <c:if test="${!empty sid}">
-                        <a href="${path }/UpdateQna.do?no=${qna.qno }" class="btn btn-primary" style="background-color: #0B7B20">글 수정</a>
-                        <a href="${path }/DeleteQna.do?no=${qna.qno }" class="btn btn-primary" style="background-color: #0B7B20">글 삭제</a>
+                        <a href="${path }/UpdateQna.do?no=${qna.qno }" class="btn btn-primary" style="background-color: #0B7B20">수정</a>
+                        <a href="${path }/DeleteQna.do?no=${qna.qno }" class="btn btn-primary" style="background-color: #0B7B20">삭제</a>
                     </c:if>
                 </div>
             </div>
