@@ -60,7 +60,8 @@ public class Serve {
     @Override
     public String toString() {
         return "Serve{" +
-                "sno=" + sno +
+                "serno=" + serno +
+                ", sno=" + sno +
                 ", pno=" + pno +
                 ", amount=" + amount +
                 ", sprice=" + sprice +

@@ -11,11 +11,19 @@
     <%@ include file="../common.jsp"%>
     <style>
         #tb1 { width:960px; margin:40px auto; }
-        #tb1 th { background-color: #111; color:#fff; }
+        #tb1 th { background-color: #0B7B20; color:#fff; }
         .item1 { width:10%; }
         .item2 { width:20%; }
         .item3 { width:55%; }
         .item4 { width:15%; }
+        #tb1 td {
+            background-color: #d1e7dd;
+        }
+        .btn-primary {
+            background-color: #0B7B20;
+            border-color: #0B7B20;
+            margin: 10px 170px 30px 169px;
+        }
     </style>
 </head>
 <body>

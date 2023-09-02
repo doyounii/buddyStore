@@ -7,23 +7,30 @@ import java.sql.ResultSet;
 public interface DBConnect {
     final static String NOTICE_SELECT_ALL = "select * from notice order by no desc";
     final static String NOTICE_SELECT_ONE = "select * from notice where no=?";
-    final static String NOTICE_INSERT = "insert into notice values (default,?,?,default,default);";
-    final static String NOTICE_SELECT_RANGE = "select * from (select * from notice order by no desc limit 5 offset ?) as notice";
+    final static String NOTICE_INSERT = "insert into notice values (default,?,?,default);";
     final static String NOTICE_UPDATE = "update notice set title=?, content=? where no=?";
     final static String NOTICE_DELETE = "delete from notice where no=?";
-    final static String NOTICE_COUNT = "select count(*) as cnt from notice";
-    final static String NOTICE_COUNT_TITLE = "select count(*) as cnt from notice where title like ?";
-    final static String NOTICE_COUNT_CONTENT = "select count(*) as cnt from notice where content like ?";
-    final static String NOTICE_COUNT_ALL = "select count(*) as cnt from notice where title like ? or content like ?";
-    final static String NOTICE_SELECT_TITLE_RANGE = "select * from (select * from notice where title like ? order by resdate desc limit 5 offset ?) as notice";
-    final static String NOTICE_SELECT_CONTENT_RANGE = "select * from (select * from notice where content like ? order by resdate desc limit 5 offset ?) as notice";
-    final static String NOTICE_SELECT_ALL_RANGE = "select * from (select * from notice where title like ? or content like ? order by resdate desc limit 5 offset ?) as notice";
+
+    final static String EVENT_SELECT_ALL = "select * from event order by no desc";
+    final static String EVENT_SELECT_ONE = "select * from event where no=?";
+    final static String EVENT_INSERT = "insert into event values (default,?,?,default, ?);";
+    final static String EVENT_UPDATE = "update event set title=?, content=? where no=?";
+    final static String EVENT_DELETE = "delete from event where no=?";
+
+    final static String WINNER_SELECT_ALL = "select * from winner order by no desc";
+    final static String WINNER_SELECT_ONE = "select * from winner where no=?";
+    final static String WINNER_INSERT = "insert into winner values (default,?,?,default);";
+    final static String WINNER_UPDATE = "update winner set title=?, content=? where no=?";
+    final static String WINNER_DELETE = "delete from winner where no=?";
+
+
+    final static String FAQ_SELECT_ALL = "select * from faq order by fno";
 
     final static String CUSTOM_SELECT_ALL = "select * from custom order by regdate desc";
     final static String CUSTOM_SELECT_ONE = "select * from custom where id=?";
     final static String CUSTOM_SELECT_LOG = "select * from custom where id=?";
-    final static String CUSTOM_INSERT = "insert into custom values (?,?,?,default,default,?,?,?,default,?)";
-    final static String CUSTOM_UPDATE = "update custom set pw=?,tel=?,email=? where id=?";
+    final static String CUSTOM_INSERT = "insert into custom values (?, ?, ?, default, default, ?, ?, ?, default, ?, ?)";
+    final static String CUSTOM_UPDATE = "update custom set pw=?,tel=?,email=?,addr=? where id=?";
     final static String CUSTOM_DELETE = "delete from custom where id=?";
 
     final static String PRODUCT_SELECT_ALL = "select * from product order by pno";
@@ -31,7 +38,7 @@ public interface DBConnect {
     final static String PRODUCT_SELECT_ONE = "select * from product where pno=?";
     final static String PRODUCT_SELECT_NEW = "select * from (select * from product order by pno desc limit 1) as product";
     //final static String PRODUCT_SELECT_BEST = "select * from (select * from product where pno in (select pno from payment group by pno order by sum(amount) desc limit 1)) as product";
-    final static String PRODUCT_SELECT_BEST = "SELECT * FROM product WHERE pno IN (SELECT pno FROM (SELECT pno, SUM(amount) as total_amount FROM payment GROUP BY pno ORDER BY total_amount DESC LIMIT 1 ) subquery);";
+    final static String PRODUCT_SELECT_BEST = "SELECT * FROM product WHERE pno IN (SELECT pno FROM (SELECT pno, SUM(amount) as total_amount FROM payment GROUP BY pno ORDER BY total_amount DESC LIMIT 1 ) subquery)";
 
     final static String PRODUCT_INSERT = "insert into product values(default, ?, '', ?, ?, ?, ?, ?, ?, ?, default)";
     //final static String PRODUCT_INSERT_UPDATE = "select * from (update product set prono = concat(cate, pno) where pno in (select pno from product order by resdate desc limit 1)) as product";
@@ -73,7 +80,7 @@ public interface DBConnect {
 
     //재고 조회
     final static String INVENTORY_SELECT_ALL = "select * from inventory order by pno desc";
-    final static String INVENTORY_SELECT_ONE = " select * from inventory where pno=?";
+    final static String INVENTORY_SELECT_ONE = " select * from inventory WHERE pno =?";
     //final static String INVENTORY_SELECT_ONE = "select sum(amount) as amount from receive where pno=? group by pno";
 
     //입고 처리
@@ -100,7 +107,6 @@ public interface DBConnect {
     final static String QNA_SELECT_TITLE_RANGE = "select * from (select * from QNA where title like ? order by resdate desc limit 5 offset ?) as qna";
     final static String QNA_SELECT_CONTENT_RANGE = "select * from (select * from QNA where content like ? order by resdate desc limit 5 offset ? as qna";
     final static String QNA_SELECT_ALL_RANGE = "select * from (select * from QNA where title like ? or content like ? order by resdate desc limit 5 offset ?) as qna";
-
 
     public Connection connect();
     public void close(PreparedStatement pstmt, Connection conn);

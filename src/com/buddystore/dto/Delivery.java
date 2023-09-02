@@ -13,25 +13,6 @@ public class Delivery {
     private String rdate;
     private String bcode;	//화물코드
 
-    private String pname;
-    private int amount;
-
-    public String getPname() {
-        return pname;
-    }
-
-    public void setPname(String pname) {
-        this.pname = pname;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
     public int getDno() {
         return dno;
     }

@@ -5,15 +5,14 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.buddystore.dto.Product;
 import com.buddystore.model.ProductDAO;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
+import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 
 //상품 등록
 @WebServlet("/AddProductPro.do")
@@ -25,6 +24,13 @@ public class AddProductProCtrl extends HttpServlet {
         String home = application.getContextPath();
         try {
             String saveDirectory = application.getRealPath("/storage"); //실제 저장 경로
+            File storageDirectory = new File(saveDirectory);
+            if (!storageDirectory.exists()) {
+                if (storageDirectory.mkdir()) {
+                    System.out.println("Storage directory created: " + saveDirectory);
+                }
+            }
+
             int maxSize = 1024*1024*10;     //10MB
             String encoding = "UTF-8";
 
@@ -39,38 +45,29 @@ public class AddProductProCtrl extends HttpServlet {
             File upfile = null;
             Enumeration files = mr.getFileNames();
 
-            int idx = 1;
-            String item;
-            String oriFile = "";
-            String fileName = "";
-            while(files.hasMoreElements()) {
-                item = (String) files.nextElement();
-                oriFile = mr.getOriginalFileName(item); //실제 첨부된 파일경로와 이름
-                fileName = mr.getFilesystemName(item);  //파일이름만 추출
-                if(fileName!=null) {
-                    upfile = mr.getFile(item); //실제 업로드
+            while (files.hasMoreElements()) {
+                String fieldName = (String) files.nextElement();
+                String fileName = mr.getFilesystemName(fieldName);
+                if (fileName != null) {
+                    upfile = mr.getFile(fieldName); //실제 업로드
                     if (upfile.exists()) {
-                        long filesize = upfile.length();
-                        if(idx==1) {
-                            pro.setImgSrc3(upfile.getName());
-                        } else if(idx==2){
-                            pro.setImgSrc2(upfile.getName());
-                        } else if(idx==3){
-                            pro.setImgSrc1(upfile.getName());
+                        if ("imgsrc1".equals(fieldName)) {
+                            pro.setImgSrc1(mr.getFile(fieldName).getName());
+                        } else if ("imgsrc2".equals(fieldName)) {
+                            pro.setImgSrc2(mr.getFile(fieldName).getName());
+                        } else if ("imgsrc3".equals(fieldName)) {
+                            pro.setImgSrc3(mr.getFile(fieldName).getName());
                         }
                         msg = "파일 업로드 성공";
                     } else {
                         msg = "파일 업로드 실패";
                     }
                 }
-                idx++;
             }
 
             ProductDAO dao = new ProductDAO();
             int cnt = dao.addProduct(pro);
-
-
-            if(cnt>0 ){
+            if(cnt>0){
                 response.sendRedirect(home+"/ProList.do");
             } else {
                 response.sendRedirect(home+"/AddProduct.do");

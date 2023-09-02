@@ -17,6 +17,24 @@
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
     <style>
     th.item1 { width:16%; }
+
+    .carousel-control-prev, .carousel-control-next {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.5);
+        border: none;
+        font-size: 20px;
+        line-height: 1;
+        color: white;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .carousel-control-prev:focus, .carousel-control-next:focus {
+        outline: none;
+    }
     </style>
 </head>
 <body>
@@ -34,21 +52,39 @@
         </nav>
         <h2 class="title">상품 구매</h2>
         <div class="container">
+            <div id="carouselExample" class="carousel slide" style="width: 300px">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <c:if test="${!empty pro.imgSrc1}">
+                            <img src="${path }/storage/${pro.imgSrc1 }" style="max-width:300px;" alt="메인 이미지">
+                        </c:if>
+                    </div>
+                    <div class="carousel-item">
+                        <c:if test="${!empty pro.imgSrc2}">
+                            <img src="${path }/storage/${pro.imgSrc2 }" style="max-width:300px;" alt="서브 이미지1">
+                        </c:if>
+                    </div>
+                    <div class="carousel-item">
+                        <c:if test="${!empty pro.imgSrc3}">
+                            <img src="${path }/storage/${pro.imgSrc3 }" style="max-width:300px;" alt="서브 이미지1">
+                        </c:if>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                    <%--<span class="sr-only" style="color: black">이전</span>--%>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
             <div class="box_wrap">
                 <form action="${path }/AddPaymentPro.do" method="post" onsubmit="return payCheck(this)">
                     <table class="table table-secondary" id="tb1">
                         <tbody>
-                        <tr>
-                            <td colspan="2">
-                                <c:if test="${!empty pro.imgSrc1}">
-                                    <img src="${path }/storage/${pro.imgSrc1 }" style="max-width:600px;" alt="대표 이미지">
-                                </c:if>
-                                <hr>
-                                <c:if test="${!empty pro.imgSrc3}">
-                                    <img src="${path }/storage/${pro.imgSrc3 }" style="max-width:600px;" alt="대표 이미지">
-                                </c:if>
-                            </td>
-                        </tr>
                         <tr>
                             <th class="item1">도서 번호</th>
                             <td class="item2">${pro.prono }</td>
@@ -77,17 +113,19 @@
                         <tr>
                             <th>가격</th>
                             <td>
-                                ${pro.price*1.35 }
-                                <input type="hidden" name="sprice" id="sprice" value="${pro.price*1.35 }">
+                                ${pro.price }
+                                <input type="hidden" name="sprice" id="sprice" value="${pro.price }">
                             </td>
                         </tr>
                         <tr>
                             <th>구매 수량</th>
                             <td>
                                 <input type="hidden" name="pno" id="pno" value="${pro.pno }" />
-                                <input type="number" name="amount" id="amount" class="form-control" min="1" value="1" max="${amount }" />
                                 <c:if test="${amount==0}">
                                     <strong>절판</strong>
+                                </c:if>
+                                <c:if test="${amount !=0}">
+                                    <input type="number" name="amount" id="amount" class="form-control" min="1" value="1" max="${amount }" />
                                 </c:if>
                             </td>
                         </tr>
@@ -151,7 +189,7 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <input type="button" id="pay" value="결재" class="btn btn-primary">
+                                <input type="button" id="pay" value="결제" class="btn btn-primary">
                             </td>
                         </tr>
                         </tbody>

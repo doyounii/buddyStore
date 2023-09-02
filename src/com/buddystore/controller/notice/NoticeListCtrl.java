@@ -2,7 +2,6 @@ package com.buddystore.controller.notice;
 
 import com.buddystore.dto.Notice;
 import com.buddystore.model.NoticeDAO;
-import com.buddystore.util.Page;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,30 +20,8 @@ public class NoticeListCtrl extends HttpServlet {
 
         NoticeDAO dao = new NoticeDAO();
         List<Notice> notiList = dao.getNoticeList();
-        Page pg = new Page();
-        int total = dao.getCount();
-        pg.makeBlock(1);
-        pg.makeLastPageNum();
-        pg.makePostStart(1);
-        notiList = dao.getNoticeList(0);
-
-        int curPageNum = 1;
-        if(request.getParameter("page")!=null){
-            curPageNum = Integer.parseInt(request.getParameter("page"));
-            pg.makeBlock(curPageNum);
-            pg.makeLastPageNum();
-            pg.makePostStart(curPageNum);
-            notiList = dao.getNoticeList(pg.getPostStart()-1);
-        }
-
-        request.setAttribute("totalPageCount", pg.getTotalPageCount());
-        request.setAttribute("pageBlockNum", pg.getPageBlockNum());
-        request.setAttribute("totalBlockNum", pg.getTotalBlockNum());
-        request.setAttribute("curPageNum", curPageNum);
-        request.setAttribute("blockStartNum", pg.getBlockStartNum());
-        request.setAttribute("blockLastNum", pg.getBlockLastNum());
-        request.setAttribute("lastPageNum", pg.getLastPageNum());
         request.setAttribute("notiList", notiList);
+
         RequestDispatcher view = request.getRequestDispatcher("/notice/noticeList.jsp");
         view.forward(request, response);
     }

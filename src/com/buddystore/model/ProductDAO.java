@@ -1,6 +1,7 @@
 package com.buddystore.model;
 
 import com.buddystore.dto.Category;
+import com.buddystore.dto.Notice;
 import com.buddystore.dto.Product;
 import com.buddystore.dto.Receive;
 
@@ -200,38 +201,6 @@ public class ProductDAO {
         }
         return cnt;
     }
-    public int insertRecieveAndServe(int pno) {
-        System.out.println(pno+"번호입니동");
-        int cnt =0;
-        DBConnect con = new MariaDBCon();
-        conn = con.connect();
-        try {
-            pstmt = conn.prepareStatement(DBConnect.RECEIVE_INSERT);
-            pstmt.setInt(1, pno);
-            pstmt.setInt(2, 0);
-            pstmt.setInt(3, 0);
-            cnt = pstmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            con.close(pstmt, conn);
-        }
-
-        con = new MariaDBCon();
-        conn = con.connect();
-        try {
-            pstmt = conn.prepareStatement(DBConnect.SERVE_INSERT);
-            pstmt.setInt(1, pno);
-            pstmt.setInt(2, 0);
-            pstmt.setInt(3, 0);
-            cnt = pstmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            con.close(pstmt, conn);
-        }
-        return cnt;
-    }
 
     public int updateProduct(Product pro){
         int cnt =0;
@@ -293,25 +262,6 @@ public class ProductDAO {
         }
         return cateList;
     }
-
-//    public int getAmount(int pno){
-//        int amount = 0;
-//        DBConnect con = new MariaDBCon();
-//        try {
-//            conn = con.connect();
-//            pstmt = conn.prepareStatement(DBConnect.INVENTORY_SELECT_ONE);
-//            pstmt.setInt(1, pno);
-//            rs = pstmt.executeQuery();
-//            if(rs.next()){
-//                amount = rs.getInt("amount");
-//            }
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        } finally {
-//            con.close(rs, pstmt, conn);
-//        }
-//        return amount;
-//    }
 
     public int getAmount(int pno){
         int amount = 0;

@@ -120,6 +120,18 @@ public class QnaDAO {
         } finally {
             con.close(pstmt, conn);
         }
+        con = new MariaDBCon();
+        conn = con.connect();
+        if (qna.getLev() == 0) {
+            String sql = "update qna set par=qno where par=0 and lev=0";
+            try {
+                pstmt = conn.prepareStatement(sql);
+                pstmt.executeUpdate();
+                cnt++;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
         return cnt;
     }
 

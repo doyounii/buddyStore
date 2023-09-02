@@ -3,9 +3,12 @@ package com.buddystore.controller.admin;
 import com.buddystore.dto.Qna;
 import com.buddystore.model.QnaDAO;
 
-import javax.servlet.*;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -14,20 +17,24 @@ import java.io.PrintWriter;
 public class AddQnaProCtrl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //String title = request.getParameter("title");
-        //String content = request.getParameter("content");
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
+        String author = request.getParameter("author");
 
-        HttpSession session = request.getSession();
-        String sid = (String) session.getAttribute("sid");
 
-        if(!sid.equals("admin") || sid==null){
-            response.sendRedirect(request.getContextPath());
-        }
+        System.out.println(request.getParameter("lev"));
+        System.out.println(request.getParameter("lev"));
+
+        int lev = Integer.parseInt(request.getParameter("lev"));
+        int par = Integer.parseInt(request.getParameter("par"));
 
         Qna qna = new Qna();
-        qna.setTitle(request.getParameter("title"));
-        qna.setContent(request.getParameter("content"));
-        qna.setAuthor(request.getParameter("author"));
+        qna.setTitle(title);
+        qna.setContent(content);
+        qna.setAuthor(author);
+        qna.setLev(lev);
+        qna.setPar(par);
+
 
         PrintWriter out = response.getWriter();
 

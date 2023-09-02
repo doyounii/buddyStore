@@ -26,3 +26,5 @@ public class NoticeListCtrl extends HttpServlet {
         view.forward(request, response);
     }
 }
+
+

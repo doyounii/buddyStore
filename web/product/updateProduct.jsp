@@ -25,9 +25,6 @@
         </nav>
         <div class="container-fluid">
             <h2 class="title">상품 정보</h2>
-            <aside class="col-3">
-                <%@ include file="../adminNav.jsp"%>
-            </aside>
             <article class="col-9">
                 <form name="frm1" id="frm1" action="${path }/UpdateProductPro.do" method="post" enctype="multipart/form-data">
                     <table class="table">
@@ -62,7 +59,7 @@
                         </tr>
                         <tr>
                             <th><label for="plist">상품목차</label></th>
-                            <td><textarea rows="10" cols="100" name="plist" id="plist" placeholder="도서 상품의 목차를 입력하세요" class="form-control" maxlength="1990" required>${pro.pcomment }</textarea></td>
+                            <td><textarea rows="10" cols="100" name="plist" id="plist" placeholder="도서 상품의 목차를 입력하세요" class="form-control" maxlength="1990" required>${pro.plist }</textarea></td>
                         </tr>
                         <tr>
                             <th><label for="price">가격</label></th>

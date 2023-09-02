@@ -25,10 +25,7 @@
         </nav>
         <div class="container-fluid">
             <h2 class="title">상품 입고</h2>
-            <aside class="col-3">
-                <%@ include file="../adminNav.jsp"%>
-            </aside>
-            <article class="col-9">
+            <article class="col-12">
                 <form name="frm1" id="frm1" action="${path }/AddReceivePro.do" method="post">
                     <table class="table">
                         <tbody>
@@ -69,15 +66,15 @@
                     </div>
                 </form>
                 <script>
-                $(document).ready(function(){
-                   $("#pno").change(function(){
-                        var v = $(this).val();
-                        var cate = $(this).find("option:selected").attr("cate");
-                        var price = parseInt($(this).find("option:selected").attr("price"));
-                        $("#cate").text(cate);
-                        $("#rprice").val(price);
-                   });
-                });
+                    $(document).ready(function(){
+                        $("#pno").change(function(){
+                            var v = $(this).val();
+                            var cate = $(this).find("option:selected").attr("cate");
+                            var price = parseInt($(this).find("option:selected").attr("price"));
+                            $("#cate").text(cate);
+                            $("#rprice").val(price);
+                        });
+                    });
                 </script>
             </article>
         </div>

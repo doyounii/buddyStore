@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class PostgreCon implements DBConnect {
     final String DRIVER = "org.postgresql.Driver";
-    final String URL = "jdbc:postgresql://localhost:5432/buddystore";
+    final String URL = "jdbc:postgresql://localhost:5432/weekstore";
     final String USER = "postgres";
     final String PASS = "1234";
     Connection conn = null;

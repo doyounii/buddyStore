@@ -18,6 +18,13 @@
         .item4 { width:30%; }
         .item5 { width:15%; }
         #page-nation1 { width: 960px; margin:20px auto; }
+        .btn btn-primary {
+            background-color: #0B7B20;
+            border-color: #0B7B20;
+        }
+        #tb1 td {
+            background-color: #d1e7dd;
+        }
     </style>
 </head>
 <body>
@@ -35,9 +42,6 @@
         </nav>
         <div class="container-fluid">
             <h2 class="title">배송 관리 리스트</h2>
-            <aside class="col-3">
-                <%@ include file="../../adminNav.jsp"%>
-            </aside>
             <article class="col-9">
 <%--                <form name="frm1" id="frm1" action="${path }/AddProductPro.do" method="post" enctype="multipart/form-data">--%>
 <%--                    <table class="table">--%>

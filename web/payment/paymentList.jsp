@@ -16,6 +16,9 @@
         .item2 { width:20%; }
         .item3 { width:55%; }
         .item4 { width:15%; }
+        #tb1 td {
+            background-color: #d1e7dd;
+        }
     </style>
 </head>
 <body>
@@ -26,19 +29,18 @@
             <div class="container">
                 <ol class="breadcrumb justify-content-end">
                     <li class="breadcrumb-item"><a href="${path }">Home</a></li>
-                    <li class="breadcrumb-item"><a href="${path }/Mypage.do">마이페이지</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">결제내역</li>
+                    <li class="breadcrumb-item"><a href="#">주문 내역</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">List</li>
                 </ol>
             </div>
         </nav>
-        <h2 class="title">결제 내역</h2>
-        <p class="msg">${msg }</p>
+        <h2 class="title">주문 내역</h2>
         <div class="container">
             <div class="box_wrap">
                 <table class="table table-secondary" id="tb1">
                     <thead>
                     <tr>
-                        <th class="item1">연번</th>
+                        <th class="item1">번호</th>
                         <th class="item2">결제상품</th>
                         <th class="item3">결제정보</th>
                         <th class="item4">작업</th>

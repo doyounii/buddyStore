@@ -28,7 +28,7 @@ public class UpdateNoticeProCtrl extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         if(a>0){
-            response.sendRedirect(request.getContextPath()+"/NoticeList.do");
+            response.sendRedirect(request.getContextPath() + "/AdminNoticeList.do");
         } else {
             out.println("<script>history.go(-1);</script>");
         }

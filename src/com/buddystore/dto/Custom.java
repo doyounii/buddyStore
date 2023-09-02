@@ -11,6 +11,7 @@ public class Custom {
     private String birth;
     private String addr;
     private String regdate;
+    private int job;
 
     public String getId() {
         return id;
@@ -76,6 +77,14 @@ public class Custom {
         this.birth = birth;
     }
 
+    public String getAddr() {
+        return addr;
+    }
+
+    public void setAddr(String addr) {
+        this.addr = addr;
+    }
+
     public String getRegdate() {
         return regdate;
     }
@@ -84,12 +93,12 @@ public class Custom {
         this.regdate = regdate;
     }
 
-    public String getAddr() {
-        return addr;
+    public int getJob() {
+        return job;
     }
 
-    public void setAddr(String addr) {
-        this.addr = addr;
+    public void setJob(int job) {
+        this.job = job;
     }
 
     @Override
@@ -105,6 +114,7 @@ public class Custom {
                 ", birth='" + birth + '\'' +
                 ", addr='" + addr + '\'' +
                 ", regdate='" + regdate + '\'' +
+                ", job=" + job +
                 '}';
     }
 }

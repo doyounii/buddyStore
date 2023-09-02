@@ -12,8 +12,11 @@
     <title>회원가입</title>
     <jsp:include page="../common.jsp" />
     <style>
-        .title { padding-top:36px; padding-bottom:20px; }
+        .btn-group { float: right }
+        .title { text-align: center; padding-top: 50px; padding-bottom: 100px; background-color: darkgreen; color: white; border-radius: 25px; margin-top: 10px; margin-bottom: 60px; }
+        th { text-align: center; background-color: darkgreen; color: white; }
         #id { width:780px; float:left; margin-right:30px; margin-left:6px; }
+        .section { height: auto; margin-bottom: 50px; }
     </style>
 </head>
 <body>
@@ -29,7 +32,7 @@
                     <td>
                         <div class="form-row">
                             <input type="text" name="id" id="id" placeholder="영문소문자 및 숫자를 혼용하여 아이디 입력" class="form-control" pattern="^[a-z0-9]{8,16}" maxlength="16" autofocus required />
-                            <input type="button" class="btn btn-primary" value="아이디 중복 확인" onclick="idCheck()">
+                            <input type="button" class="btn btn-success" value="아이디 중복 확인" onclick="idCheck()">
                             <input type="hidden" name="idck" id="idck" value="no">
                         </div>
                         <div>
@@ -58,6 +61,16 @@
                     <td><input type="text" name="name" id="name" placeholder="이름 입력" class="form-control" required /></td>
                 </tr>
                 <tr>
+                    <th>직업</th>
+                    <td>
+                        <select name="job" id="job">
+                            <option value="0">학생</option>
+                            <option value="1">부모님</option>
+                            <option value="2">선생님</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
                     <th>이메일</th>
                     <td><input type="email" name="email" id="email" placeholder="이메일 입력" class="form-control" required></td>
                 </tr>
@@ -71,18 +84,19 @@
                 </tr>
                 <tr>
                     <th>주소</th>
-                    <td><input type="text" name="address1" id="address1" placeholder="기본 주소 입력" class="form-control" required /><br>
+                    <td>
+                        <button type="button" id="post_btn" onclick="findAddr()" class="btn btn-success">우편번호 검색</button>
+                        <input type="text" name="address1" id="address1" placeholder="기본 주소 입력" class="form-control" required /><br>
                         <input type="text" name="address2" id="address2" placeholder="상세 주소 입력" class="form-control" required /><br>
                         <input type="text" name="postcode" id="postcode" style="width:160px;float:left;margin-right:20px;" placeholder="우편번호" class="form-control">
-                        <button type="button" id="post_btn" onclick="findAddr()" class="btn btn-primary">우편번호 검색</button>
                     </td>
                 </tr>
                 </tbody>
             </table>
             <div class="btn-group">
-                <input type="submit" name="submit-btn" class="btn btn-primary" value="회원가입">
-                <input type="reset" name="reset-btn" class="btn btn-primary" value="취소">
-                <a href="${path }/Login.do" class="btn btn-primary">로그인</a>
+                <input type="submit" name="submit-btn" class="btn btn-outline-success" value="회원가입">
+                <input type="reset" name="reset-btn" class="btn btn-outline-success" value="취소">
+                <a href="${path }/Login.do" class="btn btn-outline-success">로그인</a>
             </div>
         </form>
         <script>
@@ -97,32 +111,32 @@
                     }
                 });
             });
-        function idCheck(){
-            if($("#id").val()==""){
-                alert("아이디를 입력하지 않았습니다.");
-                $("#id").focus();                return;
-            }
-            var params = { id:$("#id").val() }
-            $.ajax({
-               url:"${path }/IdCheck.do",
-               type:"post",
-               dataType:"json",
-               data:params,
-               success:function(data){   //console.log(data.result);
-                    var idPass = data.result;
-                    if(idPass==false){
-                        $("#idck").val("no");
-                        $("#msg").html("<strong style='color:red'>기존에 사용되고 있는 아이디입니다. 다시 입력하시기 바랍니다.</strong>");
-                        $("#id").focus();
-                    } else if(idPass==true){
-                        $("#idck").val("yes");
-                        $("#msg").html("<strong style='color:red'>사용 가능한 아이디입니다.</strong>");
-                    } else if(idPass==""){
-                        $("#msg").text("<strong style='color:blue'>아이디가 확인되지 않았습니다. 다시 시도하시기 바랍니다.</strong>");
+            function idCheck(){
+                if($("#id").val()==""){
+                    alert("아이디를 입력하지 않았습니다.");
+                    $("#id").focus();                return;
+                }
+                var params = { id:$("#id").val() }
+                $.ajax({
+                    url:"${path }/IdCheck.do",
+                    type:"post",
+                    dataType:"json",
+                    data:params,
+                    success:function(data){   //console.log(data.result);
+                        var idPass = data.result;
+                        if(idPass==false){
+                            $("#idck").val("no");
+                            $("#msg").html("<strong style='color:red'>기존에 사용되고 있는 아이디입니다. 다시 입력하시기 바랍니다.</strong>");
+                            $("#id").focus();
+                        } else if(idPass==true){
+                            $("#idck").val("yes");
+                            $("#msg").html("<strong style='color:blue'>사용 가능한 아이디입니다.</strong>");
+                        } else if(idPass==""){
+                            $("#msg").text("<strong style='color:red'>아이디가 확인되지 않았습니다. 다시 시도하시기 바랍니다.</strong>");
+                        }
                     }
-               }
-            });
-        }
+                });
+            }
         </script>
         <script>
             function joinCheck(f){

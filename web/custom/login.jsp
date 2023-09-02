@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,48 +9,86 @@
     <title>로그인</title>
     <c:set var="path" value="<%=request.getContextPath() %>" />
     <%@ include file="../common.jsp"%>
-    <link rel="stylesheet" href="ft.css">
-    <script src="../js/jquery-1.10.0.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </head>
+<style>
+    .divider:after,
+    .divider:before {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #eee;
+    }
+    .h-custom {
+        height: calc(100% - 73px);
+    }
+    @media (max-width: 450px) {
+        .h-custom {
+            height: 100%;
+        }
+    }
+
+    .btn {
+        color: white;
+        background-color: #1D7151;
+        border-color: #1D7151;
+    }
+
+    .small {
+        font-size: 16px;
+    }
+
+    .img-fluid {
+        border-radius: 100px;
+        overflow: hidden;
+    }
+
+
+    .img {
+        height: 175px;
+        width: 500px;
+    }
+
+</style>
 <body>
-<div class="container-fluid">
-    <%@ include file="../header.jsp"%>
-    <div class="contents" style="min-height:100vh">
-        <nav aria-label="breadcrumb container-fluid" style="padding-top:28px; border-bottom:2px solid #666;">
-            <div class="container">
-                <ol class="breadcrumb justify-content-end">
-                    <li class="breadcrumb-item"><a href="${path }">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Custom</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Login</li>
-                </ol>
+<section class="vh-100">
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="${path }/images/login2.png"
+                     class="img-fluid" alt="Sample image">
             </div>
-        </nav>
-        <h2 class="title">로그인</h2>
-        <div class="container">
-            <form action="${path }/LoginPro.do" method="post">
-                <table class="table">
-                    <tbody>
-                    <tr>
-                        <td><input type="text" name="id" id="id" class="form-control" placeholder="아이디 입력"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="password" name="pw" id="pw" class="form-control" placeholder="비밀번호 입력"></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="submit" value="로그인" class="btn btn-primary">
-                            <a href="" class="btn btn-secondary">회원가입</a>
-                            <a href="${path }/custom/naverLogin.jsp" class="btn btn-primary">네이버 로그인</a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </form>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                <form action="${path }/LoginPro.do">
+                    <div class="col-md-9 col-lg-6 col-xl-5">
+                        <img src="${path }/images/loginlogo.png"
+                             class="img" alt="loginlogo">
+                    </div>
+
+                    <div class="divider d-flex align-items-center my-4">
+                        <p class="text-center fw-bold mx-3 mb-0"></p>
+                    </div>
+
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <input type="text" id="id" name="id" class="form-control form-control-lg"
+                               placeholder="아이디를 입력해주세요." />
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-3">
+                        <input type="password" id="pw" name="pw" class="form-control form-control-lg"
+                               placeholder="비밀번호를 입력해주세요." />
+                    </div>
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <button type="submit" class="btn"
+                                style="padding-left: 2.5rem; padding-right: 2.5rem;">로그인하기</button>
+                        <p class="small fw-bold mt-2 pt-1 mb-0">계정이 없으신가요? <a href="${path }/Term.do" class="link-danger">회원가입</a></p>
+                    </div>
+
+                </form>
+            </div>
         </div>
     </div>
-    <%@ include file="/footer.jsp" %>
-</div>
+</section>
 </body>
 </html>

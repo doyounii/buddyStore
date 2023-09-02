@@ -909,11 +909,12 @@
         <label for="ck_item2" class="form-check-label">개인정보처리방침에 동의</label><br><br>
     </div><br><hr><br>
     <div class="form-check">
-        <label onclick="protocol()" class="form-check-label"><strong>전체 약관에 동의</strong></label>
+        <input type="checkbox" id="allagr" name="allagr" class="form-check-input" onclick="protocol()">
+        <label for="allagr" onclick="protocol()" class="form-check-label"><strong>전체 약관에 동의</strong></label>
     </div>
     <br><hr><br>
     <div class="btn-group">
-        <button type="button" id="in_btn1" class="btn btn-primary">다음 단계</button>
+        <button type="button" id="in_btn1" class="btn btn-success">다음 단계</button>
     </div>
     <script>
         var ck_item1 = document.getElementById("ck_item1");
@@ -928,8 +929,13 @@
             }
         });
         function protocol(){
-            ck_item1.checked = true;
-            ck_item2.checked = true;
+            if(allagr.checked) {
+                ck_item1.checked = true;
+                ck_item2.checked = true;
+            } else {
+                ck_item1.checked = false;
+                ck_item2.checked = false;
+            }
         }
     </script>
 </div>

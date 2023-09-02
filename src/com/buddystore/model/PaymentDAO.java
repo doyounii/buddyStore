@@ -1,6 +1,7 @@
 package com.buddystore.model;
 
 import com.buddystore.dto.*;
+import com.buddystore.dto.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

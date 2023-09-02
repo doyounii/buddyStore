@@ -13,18 +13,78 @@
     #tb1 { width:960px; margin:40px auto; }
     #tb1 th { background-color: #0B7B20; color:#fff; }
     .item1 { width:10%; }
-    .item2 { width:70%; }
+    .item2 { width:55%; }
     .item3 { width:10%; }
-    .item4 { width:10%; }
+    .item4 { width:25%; }
     #page-nation1 { width: 960px; margin:20px auto; }
+    #tb1 td {
+        background-color: #ffffff;
+    }
+    td a {
+        text-decoration-line: none;
+    }
+    .input-group {
+        margin: 95px 95px 0px 95px;
+    }
+
     </style>
     <style>
         .btn_group { clear:both; width:800px; margin:20px auto; }
         .btn_group:after { content:""; display:block; width:100%; clear: both; }
         .btn_group p {text-align: center;   line-height:3.6; }
+        .btn-primary {
+            margin: 0px 159px;
+        }
     </style>
-    <link rel="stylesheet" href="../js/jquery.dataTables.css">
-    <script src="../js/jquery.dataTables.js"></script>
+    <style>
+        .title {
+            margin-top: 55px;
+            text-align: center;
+        }
+
+        .box_wrap {
+            position: relative;
+            max-width: 1280px;
+            min-height: 450px;
+            margin: 50px auto 150px;
+        }
+
+        .notice-list th:nth-child(1) {
+            width: 12%;
+        }
+
+        .box_wrap {
+            border-top: 2px solid #666;
+        }
+
+        .box_wrap thead th {
+            padding: 15px 5px;
+            border-bottom: 1px solid #d0cfd5;
+            text-align: center;
+        }
+
+
+        .box_wrap tbody td {
+            padding: 15px 5px;
+            border-bottom: 1px solid #d0cfd5;
+            text-align: center;
+        }
+
+        .item2 .al{
+            text-decoration-line: none;
+            color: black;
+            display: block;
+            text-overflow: ellipsis;
+            max-height: 2.8em;
+            line-height: 1.4em;
+            word-wrap: break-word;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            word-break: keep-all;
+        }
+    </style>
 </head>
 <body>
 <div class="container-fluid">
@@ -56,10 +116,10 @@
                         </fieldset>
                     </form>
                 </div>
-                <table class="table table-secondary" id="tb1">
+                <table class="notice-list" id="tb1">
                     <thead>
                     <tr>
-                        <th class="item1">연번</th>
+                        <th class="item1">번호</th>
                         <th class="item2">제목</th>
                         <th class="item3">작성자</th>
                         <th class="item4">작성일</th>
@@ -67,15 +127,16 @@
                     </thead>
                     <tbody>
                     <c:forEach var="qna" items="${qnaList }" varStatus="status">
+                        <c:set var="num" value="${num+1 }" />
                     <tr>
-                        <td class="item1">${qna.qno }</td>
+                        <td class="item1">${num }</td>
                         <td class="item2">
                             <c:if test="${qna.lev == 0}">
-                                <a href="${path }/Qna.do?qno=${qna.qno }&lev=${qna.lev }">${qna.title }</a>
+                                <a href="${path }/Qna.do?qno=${qna.qno }&lev=${qna.lev }" class="al">${qna.title }</a>
                             </c:if>
                             <c:if test="${qna.lev == 1}">
-                                <a href="${path }/Qna.do?qno=${qna.qno }&lev=${qna.lev }">
-                                    <img src="../images/icon_reply.png" alt="[답변]">${qna.title }
+                                <a href="${path }/Qna.do?qno=${qna.qno }&lev=${qna.lev }" class="al">
+                                    <img src="${path }/images/icon_reply.png" alt="[답변]">${qna.title }
                                 </a>
                             </c:if>
                         </td>

@@ -19,17 +19,12 @@ public class AddReceiveProCtrl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletContext application = request.getServletContext();
         String home = application.getContextPath();
-
         Receive rec = new Receive();
         rec.setPno(Integer.parseInt(request.getParameter("pno")));
         rec.setAmount(Integer.parseInt(request.getParameter("amount")));
         rec.setRprice(Integer.parseInt(request.getParameter("rprice")));
-
         ProductDAO dao = new ProductDAO();
-
-
         int cnt = dao.addReceive(rec);
-
         //출고 처리(PaymentDAO.addServe(serv))
         PaymentDAO payDAO = new PaymentDAO();
         Serve serv = new Serve();
@@ -37,13 +32,11 @@ public class AddReceiveProCtrl extends HttpServlet {
         serv.setAmount(0);
         int sprice = (int) Double.parseDouble(request.getParameter("rprice"));
         serv.setSprice(sprice);
-
         int cnt2 = payDAO.addServe2(serv);
-
-        if(cnt>0 && cnt2>0){
-            response.sendRedirect(home+"/ProList.do");
+        if (cnt > 0 && cnt2 > 0) {
+            response.sendRedirect(home + "/ProList.do");
         } else {
-            response.sendRedirect(home+"/AddReceive.do");
+            response.sendRedirect(home + "/AddReceive.do");
         }
     }
 }

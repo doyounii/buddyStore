@@ -25,6 +25,6 @@ public class AdminSalesCompleteCtrl extends HttpServlet {
         DeliveryDAO dao = new DeliveryDAO();
         int cnt = dao.salesComplete(dno);
 
-        response.sendRedirect(request.getContextPath()+"/AdminDelivery.do?dno="+request.getParameter("dno"));
+        response.sendRedirect(request.getContextPath()+"/AdminGetDelivery.do?dno="+request.getParameter("dno"));
     }
 }

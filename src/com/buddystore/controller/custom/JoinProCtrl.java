@@ -4,11 +4,9 @@ import com.buddystore.dto.Custom;
 import com.buddystore.model.CustomDAO;
 import com.buddystore.util.AES256;
 
-import javax.servlet.ServletException;
+import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet("/JoinPro.do")
@@ -21,9 +19,12 @@ public class JoinProCtrl extends HttpServlet {
         String name = request.getParameter("name");
         String addr1 = request.getParameter("address1");
         String addr2 = request.getParameter("address2");
+        String postcode = request.getParameter("postcode");
         String email = request.getParameter("email");
         String tel = request.getParameter("tel");
         String birth = request.getParameter("birth");
+        int job = Integer.parseInt(request.getParameter("job"));
+        String addr = request.getParameter("addr");
 
         boolean result = false;
         int suc = 0;
@@ -48,6 +49,8 @@ public class JoinProCtrl extends HttpServlet {
         user.setTel(tel);
         user.setEmail(email);
         user.setBirth(birth);
+        user.setJob(job);
+        //user.setAddr(addr);
         suc = dao.addCustom(user);
 
         if(suc>0){

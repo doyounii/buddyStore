@@ -1,19 +1,13 @@
 package com.buddystore.controller.custom;
 
+import com.sun.jna.platform.win32.COM.Dispatch;
 import com.buddystore.dto.Custom;
-import com.buddystore.dto.PaymentVO;
 import com.buddystore.model.CustomDAO;
-import com.buddystore.model.PaymentDAO;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
+import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet("/Mypage.do")
 public class MypageCtrl extends HttpServlet {
@@ -21,7 +15,6 @@ public class MypageCtrl extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String id = (String) session.getAttribute("sid");
-        String cid = (String) session.getAttribute("sid");
 
         CustomDAO dao = new CustomDAO();
         Custom cus = dao.getCustom(id);
@@ -29,7 +22,6 @@ public class MypageCtrl extends HttpServlet {
         System.out.println(cus.toString());
 
         request.setAttribute("cus", cus);
-
         RequestDispatcher view = request.getRequestDispatcher("/custom/mypage.jsp");
         view.forward(request, response);
     }

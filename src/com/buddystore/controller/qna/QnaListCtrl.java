@@ -21,29 +21,7 @@ public class QnaListCtrl extends HttpServlet {
 
         QnaDAO dao = new QnaDAO();
         List<Qna> qnaList = dao.getQnaList();
-        Page pg = new Page();
-        int total = dao.getCount();
-        pg.makeBlock(1);
-        pg.makeLastPageNum();
-        pg.makePostStart(1);
-        qnaList = dao.getQnaList(0);
 
-        int curPageNum = 1;
-        if(request.getParameter("page")!=null){
-            curPageNum = Integer.parseInt(request.getParameter("page"));
-            pg.makeBlock(curPageNum);
-            pg.makeLastPageNum();
-            pg.makePostStart(curPageNum);
-            qnaList = dao.getQnaList(pg.getPostStart()-1);
-        }
-
-        request.setAttribute("totalPageCount", pg.getTotalPageCount());
-        request.setAttribute("pageBlockNum", pg.getPageBlockNum());
-        request.setAttribute("totalBlockNum", pg.getTotalBlockNum());
-        request.setAttribute("curPageNum", curPageNum);
-        request.setAttribute("blockStartNum", pg.getBlockStartNum());
-        request.setAttribute("blockLastNum", pg.getBlockLastNum());
-        request.setAttribute("lastPageNum", pg.getLastPageNum());
         request.setAttribute("qnaList", qnaList);
         RequestDispatcher view = request.getRequestDispatcher("/qna/qnaList.jsp");
         view.forward(request, response);

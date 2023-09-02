@@ -1,5 +1,6 @@
 package com.buddystore.controller.custom;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +15,8 @@ public class LogoutCtrl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.invalidate();
-        response.sendRedirect("/buddystore");
+
+        response.sendRedirect(request.getContextPath());
+
     }
 }

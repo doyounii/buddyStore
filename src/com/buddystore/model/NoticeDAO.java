@@ -27,32 +27,6 @@ public class NoticeDAO {
                 noti.setTitle(rs.getString("title"));
                 noti.setContent(rs.getString("content"));
                 noti.setResdate(rs.getString("resdate"));
-                noti.setVisited(rs.getInt("visited"));
-                notiList.add(noti);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            con.close(rs, pstmt, conn);
-        }
-        return notiList;
-    }
-
-    public List<Notice> getNoticeList(int no){
-        List<Notice> notiList = new ArrayList<>();
-        DBConnect con = new MariaDBCon();
-        try {
-            conn = con.connect();
-            pstmt = conn.prepareStatement(DBConnect.NOTICE_SELECT_RANGE);
-            pstmt.setInt(1, no);
-            rs = pstmt.executeQuery();
-            while(rs.next()){
-                Notice noti = new Notice();
-                noti.setNo(rs.getInt("no"));
-                noti.setTitle(rs.getString("title"));
-                noti.setContent(rs.getString("content"));
-                noti.setResdate(rs.getString("resdate"));
-                noti.setVisited(rs.getInt("visited"));
                 notiList.add(noti);
             }
         } catch (SQLException e) {
@@ -81,7 +55,6 @@ public class NoticeDAO {
                 noti.setTitle(rs.getString("title"));
                 noti.setContent(rs.getString("content"));
                 noti.setResdate(rs.getString("resdate"));
-                noti.setVisited(rs.getInt("visited"));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -119,9 +92,9 @@ public class NoticeDAO {
         String sql = "update notice set title=?, content=? where no=?";
         try {
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, "수정 DAO테스트1");
-            pstmt.setString(2, "수정 DAO테스트내용입니다.1");
-            pstmt.setInt(3, 3);
+            pstmt.setString(1, noti.getTitle());
+            pstmt.setString(2, noti.getContent());
+            pstmt.setInt(3, noti.getNo());
             cnt = pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -142,7 +115,7 @@ public class NoticeDAO {
         String sql = "delete from notice where no=?";
         try {
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, 5);
+            pstmt.setInt(1, no);
             cnt = pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -150,101 +123,5 @@ public class NoticeDAO {
             con.close(pstmt, conn);
         }
         return cnt;
-    }
-
-    public int getCount(){
-        int cnt = 0;
-        DBConnect con = new MariaDBCon();
-        conn = con.connect();
-        if(conn!=null){
-            System.out.println("PostgreSQL 연결 성공");
-        }
-
-        try {
-            pstmt = conn.prepareStatement(DBConnect.NOTICE_COUNT);
-            rs = pstmt.executeQuery();
-            if(rs.next()){
-                cnt = rs.getInt("cnt");
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            con.close(rs, pstmt, conn);
-        }
-        return cnt;
-    }
-
-    public int getCount(String searchType, String kwd){
-        int cnt = 0;
-        DBConnect con = new MariaDBCon();
-        conn = con.connect();
-        if(conn!=null){
-            System.out.println("PostgreSQL 연결 성공");
-        }
-
-        try {
-            if(searchType.equals("title")) {
-                pstmt = conn.prepareStatement(DBConnect.NOTICE_COUNT_TITLE);
-                pstmt.setString(1, "%" + kwd + "%");
-            } else if(searchType.equals("content")){
-                pstmt = conn.prepareStatement(DBConnect.NOTICE_COUNT_CONTENT);
-                pstmt.setString(1, "%" + kwd + "%");
-            } else {
-                pstmt = conn.prepareStatement(DBConnect.NOTICE_COUNT_ALL);
-                pstmt.setString(1, "%" + kwd + "%");
-                pstmt.setString(2, "%" + kwd + "%");
-            }
-            rs = pstmt.executeQuery();
-            if(rs.next()){
-                cnt = rs.getInt("cnt");
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            con.close(rs, pstmt, conn);
-        }
-        return cnt;
-    }
-
-    public List<Notice> getNoticeList(String searchType, String kwd, int no) {
-        List<Notice> notiList = new ArrayList<>();
-        DBConnect con = new MariaDBCon();
-        try {
-            conn = con.connect();
-            if(searchType.equals("title")) {
-                pstmt = conn.prepareStatement(DBConnect.NOTICE_SELECT_TITLE_RANGE);
-                pstmt.setString(1, "%"+kwd+"%");
-                pstmt.setInt(2, no);
-            } else if(searchType.equals("content")){
-                pstmt = conn.prepareStatement(DBConnect.NOTICE_SELECT_CONTENT_RANGE);
-                pstmt.setString(1, "%"+kwd+"%");
-                pstmt.setInt(2, no);
-            } else {
-                pstmt = conn.prepareStatement(DBConnect.NOTICE_SELECT_ALL_RANGE);
-                pstmt.setString(1, "%"+kwd+"%");
-                pstmt.setString(2, "%"+kwd+"%");
-                pstmt.setInt(3, no);
-            }
-            rs = pstmt.executeQuery();
-            while(rs.next()){
-                Notice noti = new Notice();
-                noti.setNo(rs.getInt("no"));
-                noti.setTitle(rs.getString("title"));
-                noti.setContent(rs.getString("content"));
-                noti.setResdate(rs.getString("resdate"));
-                noti.setVisited(rs.getInt("visited"));
-                notiList.add(noti);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            con.close(rs, pstmt, conn);
-        }
-        return notiList;
-    }
-
-    public int getStartPost(String searchType, String kwd){
-        int startPost = 0;
-        return startPost;
     }
 }

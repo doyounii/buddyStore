@@ -15,7 +15,7 @@ public class AdminCtrl extends HttpServlet {
         String msg = "관리자페이지가 로딩되었습니다.";
 
         request.setAttribute("msg", msg);
-        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/index.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/adminIndex.jsp");
         view.forward(request, response);
     }
 }

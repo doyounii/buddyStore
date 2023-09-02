@@ -25,10 +25,7 @@
         </nav>
         <div class="container-fluid">
             <h2 class="title">상품 등록</h2>
-            <aside class="col-3">
-                <%@ include file="../adminNav.jsp"%>
-            </aside>
-            <article class="col-9">
+            <article class="col-12">
                 <form name="frm1" id="frm1" action="${path }/AddProductPro.do" method="post" enctype="multipart/form-data">
                     <table class="table">
                         <tbody>
@@ -69,11 +66,11 @@
                         </tr>
                         <tr>
                             <th><label for="imgsrc2">상품 이미지(서브 이미지)</label></th>
-                            <td><input type="file" name="imgsrc2" id="imgsrc2" placeholder="상품 서브이미지" class="form-control" required></td>
+                            <td><input type="file" name="imgsrc2" id="imgsrc2" placeholder="상품 서브이미지" class="form-control"></td>
                         </tr>
                         <tr>
                             <th><label for="imgsrc3">상품 이미지(서브 이미지2)</label></th>
-                            <td><input type="file" name="imgsrc3" id="imgsrc3" placeholder="상품 서브이미지2" class="form-control" required></td>
+                            <td><input type="file" name="imgsrc3" id="imgsrc3" placeholder="상품 서브이미지2" class="form-control"></td>
                         </tr>
                         </tbody>
                     </table>

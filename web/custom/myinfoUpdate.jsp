@@ -10,13 +10,10 @@
     <c:set var="path" value="<%=request.getContextPath() %>" />
     <%@ include file="../common.jsp"%>
     <style>
-    #tb1 { width:960px; margin:40px auto; }
-    #tb1 th { background-color: #111; color:#fff; }
-    .item1 { width:10%; }
-    .item2 { width:70%; }
-    .item3 { width:10%; }
-    .item4 { width:10%; }
-    #page-nation1 { width: 960px; margin:20px auto; }
+        #tb1 { width:960px; margin:40px auto; }
+        #tb1 th { background-color: darkgreen; color:#fff; }
+        .btn-group { float: right; }
+        .title { text-align: center; padding-top: 50px; padding-bottom: 100px; background-color: darkgreen; color: white; border-radius: 25px; margin-top: 10px; margin-bottom: 60px; }
     </style>
 </head>
 <body>
@@ -35,42 +32,121 @@
         <h2 class="title">내 정보수정</h2>
         <div class="container">
             <div class="box_wrap">
-                <table class="table table-secondary" id="tb1">
-                    <tbody>
-                    <tr>
-                        <th>아이디</th>
-                        <td>${cus.id }</td>
-                    </tr>
-                    <tr>
-                        <th>비밀번호</th>
-                        <td>${cus.pw }</td>
-                    </tr>
-                    <tr>
-                        <th>이름</th>
-                        <td>${cus.name }</td>
-                    </tr>
-                    <tr>
-                        <th>가입일시</th>
-                        <td>${cus.regdate }</td>
-                    </tr>
-                    <tr>
-                        <th>이메일</th>
-                        <td>${cus.email }</td>
-                    </tr>
-                    <tr>
-                        <th>연락처</th>
-                        <td>${cus.tel }</td>
-                    </tr>
-                    <tr>
-                        <th>포인트</th>
-                        <td>${cus.point }</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <div class="btn-group">
-                    <a href="${path }/MyinfoUpdate.do?id=${cus.id }" class="btn btn-primary">회원정보수정</a>
-                    <a href="${path }" class="btn btn-primary">메인으로</a>
-                </div>
+                <form action="${path }/MyInfoUpdatePro.do" name="frm1" id="frm1" method="post" onsubmit="return updateCheck(this)">
+                    <table class="table table-success" id="tb1">
+                        <tbody>
+                        <tr>
+                            <th>아이디</th>
+                            <td colspan="2">${cus.id }</td>
+                            <input type="hidden" name="id" id="id" value="${cus.id }">
+                        </tr>
+                        <tr>
+                            <th>비밀번호</th>
+                            <td>${cus.pw }</td>
+                            <td>
+                                <input type="password" name="re_pw" id="re_pw" placeholder="비밀번호 변경" class="form-control" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$" maxlength="16" />
+                                <input type="hidden" name="pw" id="pw" value="${cus.pw }">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>비밀번호</th>
+                            <td>${cus.pw }</td>
+                            <td>
+                                <input type="password" name="re_pw2" id="re_pw2" placeholder="비밀번호 변경 확인" class="form-control" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$" maxlength="16" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>이름</th>
+                            <td colspan="2">${cus.name }</td>
+                        </tr>
+                        <tr>
+                            <th>생년월일</th>
+                            <td colspan="2">${cus.birth }</td>
+                        </tr>
+                        <tr>
+                            <th>가입일시</th>
+                            <td colspan="2">${cus.regdate }</td>
+                        </tr>
+                        <tr>
+                            <th>가입구분</th>
+                            <td colspan="2">
+                                <c:if test="${cus.job == 0}">
+                                    학생
+                                </c:if>
+                                <c:if test="${cus.job == 1}">
+                                    부모님
+                                </c:if>
+                                <c:if test="${cus.job == 2}">
+                                    선생님
+                                </c:if>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>이메일</th>
+                            <td>
+                                ${cus.email }
+                            </td>
+                            <td>
+                                <input type="email" name="re_email" id="re_email" placeholder="이메일 변경" class="form-control">
+                                <input type="hidden" name="email" id="email" value="${cus.email }">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>연락처</th>
+                            <td>${cus.tel }</td>
+                            <td>
+                                <input type="tel" name="re_tel" id="re_tel" maxlength="11" placeholder="전화번호 변경 숫자만 입력 00000000000" class="form-control">
+                                <input type="hidden" name="tel" id="tel" value="${cus.tel }">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>포인트</th>
+                            <td colspan="2">${cus.point }</td>
+                        </tr>
+                        <tr>
+                            <th>주소</th>
+                            <td>${cus.addr }</td>
+                            <td>
+                                <button type="button" id="post_btn" onclick="findAddr()" class="btn btn-success">변경 우편번호 검색</button>
+                                <input type="text" name="re_address1" id="re_address1" placeholder="기본 주소 변경" class="form-control" /><br>
+                                <input type="text" name="re_address2" id="re_address2" placeholder="상세 주소 변경" class="form-control" /><br>
+                                <input type="text" name="re_postcode" id="re_postcode" style="width:160px;float:left;margin-right:20px;" placeholder="우편번호 변경" class="form-control">
+                                <input type="hidden" name="addr" id="addr" value="${cus.addr }">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="btn-group">
+                        <input type="submit" name="submit-btn" class="btn btn-outline-success" value="수정확인">
+                        <a href="${path }" class="btn btn-outline-success">메인으로</a>
+                    </div>
+                </form>
+                <script>
+                    function updateCheck(f){
+                        if(f.re_pw.value!=f.re_pw2.value){
+                            alert("비밀번호와 비밀번호 확인이 서로 다릅니다.");
+                            f.re_pw.focus();
+                            return false;
+                        }
+                    }
+                    function findAddr(){
+                        new daum.Postcode({
+                            oncomplete:function(data){
+                                console.log(data);
+                                var roadAddr = data.roadAddress;
+                                var jibunAddr = data.jibunAddress;
+                                document.getElementById("re_postcode").value = data.zonecode;
+                                if(roadAddr !== ''){
+                                    document.getElementById("re_address1").value = roadAddr;
+                                } else if(jibunAddr !== ''){
+                                    document.getElementById("re_address1").value = jibunAddr;
+                                }
+                                document.getElementById("re_address2").focus();
+                            }
+                        }).open();
+                    }
+                </script>
+                <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
             </div>
         </div>
     </div>
