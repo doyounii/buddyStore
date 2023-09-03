@@ -11,13 +11,13 @@
     <%@ include file="../common.jsp"%>
     <style>
         #tb1 { width:960px; margin:40px auto; }
-        #tb1 th { background-color: #0B7B20; color:#fff; }
+        #tb1 th { background-color: #eb9362; color:#fff; }
         .item1 { width:10%; }
         .item2 { width:20%; }
         .item3 { width:55%; }
         .item4 { width:15%; }
         #tb1 td {
-            background-color: #d1e7dd;
+            background-color: #ffffff;
         }
     </style>
 </head>

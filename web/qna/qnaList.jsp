@@ -11,7 +11,7 @@
     <%@ include file="../common.jsp"%>
     <style>
     #tb1 { width:960px; margin:40px auto; }
-    #tb1 th { background-color: #0B7B20; color:#fff; }
+    #tb1 th { background-color: #eb9362; color:#fff; }
     .item1 { width:10%; }
     .item2 { width:55%; }
     .item3 { width:10%; }
@@ -112,7 +112,7 @@
                             </select>
                             <span style="display: inline-block; width:8px;"></span>
                             <input type="text" name="kwd" id="kwd" class="form-control" placeholder="검색어 입력" required>
-                            <input type="submit" value="검색" class="btn btn-primary" style="background-color: #0B7B20">
+                            <input type="submit" value="검색" class="btn btn-primary" style="background-color: #eb9362">
                         </fieldset>
                     </form>
                 </div>
@@ -194,7 +194,7 @@
                 <hr>
                 <c:if test="${!empty sid}">
                 <div class="container">
-                    <a href="${path }/AddQna.do?lev=0&par=0" class="btn btn-primary" style="background-color: #0B7B20">QNA 등록</a>
+                    <a href="${path }/AddQna.do?lev=0&par=0" class="btn btn-primary" style="background-color: #eb9362">QNA 등록</a>
                 </div>
                 </c:if>
             </div>

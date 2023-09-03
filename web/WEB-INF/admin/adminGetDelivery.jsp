@@ -11,7 +11,7 @@
     <%@ include file="../../common.jsp"%>
     <style>
     #tb1 { width:960px; margin:40px auto; }
-    #tb1 th { background-color: #0B7B20; color:#fff; }
+    #tb1 th { background-color: #eb9362; color:#fff; }
     .item1 { width:10%; }
     .item2 { width:70%; }
     .item3 { width:10%; }
@@ -23,11 +23,11 @@
         width: 1200px;
     }
     .btn btn-primary {
-        background-color: #0B7B20;
-        border-color: #0B7B20;
+        background-color: #eb9362;
+        border-color: #eb9362;
     }
     #tb1 td {
-        background-color: #d1e7dd;
+        background-color: #ffffff;
     }
     </style>
 </head>

@@ -11,7 +11,7 @@
     <%@ include file="../common.jsp"%>
     <style>
         #tb1 { width:960px; margin:40px auto; }
-        #tb1 th { background-color: #0B7B20; color:#fff; }
+        #tb1 th { background-color: #eb9362; color:#fff; }
         .item1 { width:10%; }
         .item2 { width:60%; }
         .item3 { width:10%; }
@@ -19,7 +19,7 @@
         #page-nation1 { width: 960px; margin:20px auto; }
 
         #tb1 td {
-            background-color: #d1e7dd;
+            background-color: #ffffff;
         }
         .btn-primary {
             width: 100px;
@@ -74,7 +74,7 @@
                         </c:forEach>
                         <c:if test="${empty cartList}">
                             <tr>
-                                <td colspan="3">장바구니 목록이 존재하지 않습니다.</td>
+                                <td colspan="4">장바구니 목록이 존재하지 않습니다.</td>
                             </tr>
                         </c:if>
                         </tbody>

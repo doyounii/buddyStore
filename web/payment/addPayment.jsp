@@ -22,7 +22,7 @@
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: #eb9362;
         border: none;
         font-size: 20px;
         line-height: 1;

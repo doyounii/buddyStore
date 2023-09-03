@@ -16,7 +16,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: #eb9362;
             border: none;
             font-size: 20px;
             line-height: 1;
@@ -29,6 +29,10 @@
         .carousel-control-prev:focus, .carousel-control-next:focus {
             outline: none;
         }
+        #tb2 .item1 { width: 10%}
+        #tb2 .item2 { width: 50%}
+        #tb2 .item3 { width: 20%}
+        #tb2 .item4 { width: 20%}
     </style>
 </head>
 <body>
@@ -125,6 +129,49 @@
                         <a href="${path }/AddCart.do?pno=${pro.pno }" class="btn btn-primary">장바구니 담기</a>
                     </c:if>
                 </div>
+                <hr>
+                <div class="container">
+                    <table class="table" id="tb2">
+                        <tbody>
+                        <c:if test="${!empty revList}">
+                            <c:forEach var="rev" items="${revList}" varStatus="status">
+                                <tr>
+                                    <td class="item1"><p>${rev.cid }</p></td>
+                                    <td class="item2"><p>${rev.content }</p></td>
+                                    <td class="item3">
+                                        <div class="author" title="${rev.cid }">
+                                            <c:if test="${rev.star==5}">
+                                                <div class="star star5">⭐⭐⭐⭐⭐</div>
+                                            </c:if>
+                                            <c:if test="${rev.star==4}">
+                                                <div class="star star4">⭐⭐⭐⭐</div>
+                                            </c:if>
+                                            <c:if test="${rev.star==3}">
+                                                <div class="star star3">⭐⭐⭐</div>
+                                            </c:if>
+                                            <c:if test="${rev.star==2}">
+                                                <div class="star star2">⭐⭐</div>
+                                            </c:if>
+                                            <c:if test="${rev.star==1}">
+                                                <div class="star star1">⭐</div>
+                                            </c:if>
+                                        </div>
+                                    </td>
+                                    <c:if test="${rev.cid eq sid || sid.equals('admin') }">
+                                    <td class="item4"><a href="${path }/DeleteReview.do?rno=${rev.rno }&pno=${pro.pno }" class="btn btn-primary" onclick="return confirmDeleteRV()">후기 삭제</a>
+                                    </td>
+                                    </c:if>
+                                </tr>
+                            </c:forEach>
+                        </c:if>
+                        <c:if test="${empty revList}">
+                            <tr>
+                                <td colspan="4"><p class="comment"><strong style="font-size:16px;">아직 이용후기가 없습니다.</strong></p></td>
+                            </tr>
+                        </c:if>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -133,6 +180,10 @@
 <script>
     function confirmDelete() {
         var confirmed = confirm("이 상품을 삭제하시겠습니까?");
+        return confirmed;
+    }
+    function confirmDeleteRV() {
+        var confirmed = confirm("이 후기를 삭제하시겠습니까?");
         return confirmed;
     }
 </script>

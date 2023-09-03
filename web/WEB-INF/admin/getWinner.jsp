@@ -26,8 +26,8 @@
             margin: 15px;
             padding: 10px;
             float: right;
-            background-color: #1D7151;
-            border-color: #1D7151;
+            background-color: #eb9362;
+            border-color: #eb9362;
             color: #ffffff;
         }
 

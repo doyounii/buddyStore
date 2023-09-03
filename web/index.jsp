@@ -50,13 +50,13 @@
             font-size:26px; text-align: center;  color: #000000; font-weight: 900;
         }
         .book-section span:nth-child(3) {
-            font-size:26px; text-align: center;  color: #0B7B20; font-weight: 900;
+            font-size:26px; text-align: center;  color: #eb9362; font-weight: 900;
         }
         .book-section p {
             font-size:26px; text-align: center;  color: #000000; font-weight: 900;
         }
         .book-section p:first-child {
-            font-size:26px; text-align: center;  color: #0B7B20; font-weight: 900;
+            font-size:26px; text-align: center;  color: #eb9362; font-weight: 900;
         }
     </style>
 </head>
@@ -66,7 +66,7 @@
     <div class="contents">
         <div class="book-section">
             <p>BEST BOOK</p>
-            <span>W</span><span>EE</span><span>K STORE에서 자신있게 추천드려요!</span>
+            <span>BUDDY STORE에서 자신있게 추천드려요!</span>
             <p>강좌까지 함께 즐겨요.</p>
             <section class="img"><img src="${path }/storage/${bestPro.imgSrc1 }" alt="베스트셀러" class="book"></section>
             <section class="player">
@@ -106,7 +106,7 @@
         </div>
         <div class="book-section">
             <p>NEW BOOK</p>
-            <span>W</span><span>EE</span><span>K STORE에서 새로운 책이 나왔어요!</span>
+            <span>BUDDY STORE에서 새로운 책이 나왔어요!</span>
             <p>최신 강좌도 나왔어요.</p>
             <section class="img"><img src="${path }/storage/${newPro.imgSrc1 }" alt="뉴북" class="book" ></section>
             <section class="player2">

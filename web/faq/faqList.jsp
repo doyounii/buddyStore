@@ -12,8 +12,8 @@
   <style>
     .accordion-item { margin: 10px auto; }
     .accordion {
-        /*--bs-accordion-border-color: #1D7151;*/
-        --bs-accordion-btn-focus-box-shadow: #1D7151;
+        /*--bs-accordion-border-color: #eb9362;*/
+        --bs-accordion-btn-focus-box-shadow: #eb9362;
     }
     .accordion-button::after {
         display: none;
@@ -41,7 +41,7 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#<c:out value='${faq.fno}'/>" aria-expanded="false"
-                                style="background-color: #1D7151; color: #ffffff;" >
+                                style="background-color: #eb9362; color: #ffffff;" >
                             <c:out value="[${status.count}] ${faq.question}"/>
                         </button>
                     </h2>

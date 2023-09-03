@@ -47,7 +47,7 @@
                 <table class="table" id="tb1">
                     <tbody>
                     <tr>
-                        <td><a href="${path }/ProList.do" class="btn" style="background: #1D7151">상품<br>목록</a></td>
+                        <td><a href="${path }/ProList.do" class="btn" style="background: #eb9362">상품<br>목록</a></td>
 
                         <td><a href="${path }/AddProduct.do" class="btn" style="background:  #2E8B57">상품<br>등록</a></td>
 
@@ -62,7 +62,7 @@
 
                         <td><a href="${path }/AdminWinnerList.do" class="btn" style="background:  #2E8B57">당첨자<br>목록</a></td>
 
-                        <td><a href="${path }" class="btn" style="background: #1D7151">메인<br>으로</a></td>
+                        <td><a href="${path }" class="btn" style="background: #eb9362">메인<br>으로</a></td>
                     </tr>
                     </tbody>
                 </table>

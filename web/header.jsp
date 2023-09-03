@@ -18,12 +18,12 @@
         background-color: white;
     }
     #gnb .nav-link {
-        color: #0B7B20;
+        color: #eb9362;
         padding-top: 7px;
     }
     #gnb .nav-link:hover {
         color: white;
-        background-color: #0B7B20;
+        background-color: #eb9362;
     }
     .fixed-top {
         padding: 5px 20px;
@@ -33,14 +33,14 @@
 
     }
     .dropdown:hover {
-        color: #0B7B20;
+        color: #eb9362;
         background-color: white;
         z-index: 2000;
     }
     .dropdown:hover .dropdown-menu {
         display: block;
         margin-top: 0;
-        color: #0B7B20;
+        color: #eb9362;
         background-color: white;
     }
     #gnb .dropdown-menu {
@@ -49,7 +49,7 @@
         background-color: white;
     }
     #gnb .dropdown-menu:hover {
-        color: #0B7B20;
+        color: #eb9362;
         background-color: white;
     }
     #menu-bar.dropdown-menu {
@@ -59,25 +59,25 @@
         background-color: white;
     }
     #menu-bar .dropdown-menu:hover {
-        color: #0B7B20;
+        color: #eb9362;
         background-color: white;
     }
     #menu-bar .nav-link {
-        color: #0B7B20;
+        color: #eb9362;
         padding-top: 14px;
         font-weight: 700;
     }
     #menu-bar .nav-link:hover {
-        color: #0B7B20;
+        color: #eb9362;
         padding-top: 14px;
     }
     .navbar-brand {
-        color: #0B7B20;
+        color: #eb9362;
         font-size: 30px;
         font-weight: 900;
     }
     .navbar-brand:hover {
-        color: #0B7B20;
+        color: #eb9362;
     }
     .divider {
         margin-top: -2px;
@@ -91,7 +91,7 @@
         background-color: white;
     }
     .dropdown-item:hover {
-        color: #0B7B20;
+        color: #eb9362;
         background-color: white;
         font-weight: 700;
         font-size: 1rem;
@@ -103,12 +103,12 @@
         margin-top: 100px;
     }
     .btn-primary {
-        background-color: #0B7B20;
-        border-color: #0B7B20;
+        background-color: #eb9362;
+        border-color: #eb9362;
     }
     .btn-primary:hover {
-        background-color: #0B7B20;
-        border-color: #0B7B20;
+        background-color: #eb9362;
+        border-color: #eb9362;
     }
 </style>
 <header>

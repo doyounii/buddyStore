@@ -108,6 +108,16 @@ public interface DBConnect {
     final static String QNA_SELECT_CONTENT_RANGE = "select * from (select * from QNA where content like ? order by resdate desc limit 5 offset ? as qna";
     final static String QNA_SELECT_ALL_RANGE = "select * from (select * from QNA where title like ? or content like ? order by resdate desc limit 5 offset ?) as qna";
 
+    //리뷰 기능
+    final static String REVIEW_INSERT = "insert into review values (default, ?, ?, ?, ?, default)";
+    final static String REVIEW_SELECT_PNO = "select * from review where sno in (select sno from payment where pno=?)";
+    final static String REVIEW_SELECT_LIST= "select * from review order by resdate desc";
+    final static String REVIEW_DELETE = "delete from review where rno=?";
+
+    //Api 테스트
+    final static String TEST_SELECT_ONE = "select * from test where no=?";
+    final static String TEST_SELECT_ALL = "select * from test";
+
     public Connection connect();
     public void close(PreparedStatement pstmt, Connection conn);
     public void close(ResultSet rs, PreparedStatement pstmt, Connection conn);

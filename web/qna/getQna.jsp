@@ -11,14 +11,14 @@
     <%@ include file="../common.jsp"%>
     <style>
     #tb1 { width:960px; margin:40px auto; }
-    #tb1 th { background-color: #0B7B20; color:#fff; }
+    #tb1 th { background-color: #eb9362; color:#fff; }
     .item1 { width:10%; }
     .item2 { width:70%; }
     .item3 { width:10%; }
     .item4 { width:10%; }
     #page-nation1 { width: 960px; margin:20px auto; }
     #tb1 td {
-        background-color: #d1e7dd;
+        background-color: #ffffff;
     }
     .btn-group {
         margin: 0px 166px;
@@ -71,13 +71,13 @@
                     </tbody>
                 </table>
                 <div class="btn-group">
-                    <a href="${path }/QnaList.do" class="btn btn-primary" style="background-color: #0B7B20">QNA 목록</a>
+                    <a href="${path }/QnaList.do" class="btn btn-primary" style="background-color: #eb9362">QNA 목록</a>
                     <c:if test="${!empty sid && lev == 0}">
-                        <a href="${path }/AddQna.do?lev=1&par=${qna.qno }" class="btn btn-primary" style="background-color: #0B7B20">답변 등록</a>
+                        <a href="${path }/AddQna.do?lev=1&par=${qna.qno }" class="btn btn-primary" style="background-color: #eb9362">답변 등록</a>
                     </c:if>
                     <c:if test="${!empty sid}">
-                        <a href="${path }/UpdateQna.do?lev=${qna.lev }&qno=${qna.qno }" class="btn btn-primary" style="background-color: #0B7B20">수정</a>
-                        <a href="${path }/DelQna.do?lev=${qna.lev }&qno=${qna.qno }" class="btn btn-primary" style="background-color: #0B7B20">삭제</a>
+                        <a href="${path }/UpdateQna.do?lev=${qna.lev }&qno=${qna.qno }" class="btn btn-primary" style="background-color: #eb9362">수정</a>
+                        <a href="${path }/DelQna.do?lev=${qna.lev }&qno=${qna.qno }" class="btn btn-primary" style="background-color: #eb9362">삭제</a>
                     </c:if>
                 </div>
             </div>

@@ -13,7 +13,6 @@ public class DeleteProductCtrl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int pno = Integer.parseInt(request.getParameter("pno"));
 
-        String msg = "상품 정보를 삭제합니다.";
         ServletContext application = request.getServletContext();
         String home = application.getContextPath();
 

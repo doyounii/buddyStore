@@ -29,8 +29,8 @@
 
     .btn {
         color: white;
-        background-color: #1D7151;
-        border-color: #1D7151;
+        background-color: #eb9362;
+        border-color: #eb9362;
     }
 
     .small {
@@ -54,13 +54,13 @@
     <div class="container-fluid h-custom">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-md-9 col-lg-6 col-xl-5">
-                <img src="${path }/images/login2.png"
+                <img src="${path }/images/login.png"
                      class="img-fluid" alt="Sample image">
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                 <form action="${path }/LoginPro.do">
                     <div class="col-md-9 col-lg-6 col-xl-5">
-                        <img src="${path }/images/loginlogo.png"
+                        <img src="${path }/images/loginlogo_2.png"
                              class="img" alt="loginlogo">
                     </div>
 

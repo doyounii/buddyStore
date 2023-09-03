@@ -11,7 +11,7 @@
     <%@ include file="../../common.jsp"%>
     <style>
         #tb1 { width:960px; margin:40px auto; }
-        #tb1 th { background-color: #1D7151;
+        #tb1 th { background-color: #eb9362;
             color:#fff;
             line-height: 60px;
             text-align: center;
@@ -30,8 +30,8 @@
             margin: 15px;
             padding: 10px;
             float: right;
-            background-color: #1D7151;
-            border-color: #1D7151;
+            background-color: #eb9362;
+            border-color: #eb9362;
             color: #ffffff;
         }
 
