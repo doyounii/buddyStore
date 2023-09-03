@@ -13,8 +13,8 @@
     <jsp:include page="../common.jsp" />
     <style>
         .btn-group { float: right }
-        .title { text-align: center; padding-top: 50px; padding-bottom: 100px; background-color: darkgreen; color: white; border-radius: 25px; margin-top: 10px; margin-bottom: 60px; }
-        th { text-align: center; background-color: darkgreen; color: white; }
+        .title { text-align: center; padding-top: 50px; padding-bottom: 100px; background-color: #eb9362; color: white; border-radius: 25px; margin-top: 10px; margin-bottom: 60px; }
+        th { text-align: center; background-color: #eb9362; color: white; }
         #id { width:780px; float:left; margin-right:30px; margin-left:6px; }
         .section { height: auto; margin-bottom: 50px; }
     </style>

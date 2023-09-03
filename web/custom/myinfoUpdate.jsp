@@ -11,9 +11,9 @@
     <%@ include file="../common.jsp"%>
     <style>
         #tb1 { width:960px; margin:40px auto; }
-        #tb1 th { background-color: darkgreen; color:#fff; }
+        #tb1 th { background-color: #eb9362; color:#fff; }
         .btn-group { float: right; }
-        .title { text-align: center; padding-top: 50px; padding-bottom: 100px; background-color: darkgreen; color: white; border-radius: 25px; margin-top: 10px; margin-bottom: 60px; }
+        .title { text-align: center; padding-top: 50px; padding-bottom: 100px; background-color: #eb9362; color: white; border-radius: 25px; margin-top: 10px; margin-bottom: 60px; }
     </style>
 </head>
 <body>

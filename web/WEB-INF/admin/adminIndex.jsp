@@ -47,22 +47,22 @@
                 <table class="table" id="tb1">
                     <tbody>
                     <tr>
-                        <td><a href="${path }/ProList.do" class="btn" style="background: #eb9362">상품<br>목록</a></td>
+                        <td><a href="${path }/ProList.do" class="btn" style="background: #fd5a02">상품<br>목록</a></td>
 
-                        <td><a href="${path }/AddProduct.do" class="btn" style="background:  #2E8B57">상품<br>등록</a></td>
+                        <td><a href="${path }/AddProduct.do" class="btn" style="background:  #ff6f1e">상품<br>등록</a></td>
 
-                        <td><a href="${path }/AddReceive.do" class="btn" style="background: #3F9D61">상품<br>입고</a></td>
+                        <td><a href="${path }/AddReceive.do" class="btn" style="background: #ff7124">상품<br>입고</a></td>
 
-                        <td><a href="${path }/AdminDeliveryList.do" class="btn" style="background: #50AF6B">배송<br>목록</a></td>
+                        <td><a href="${path }/AdminDeliveryList.do" class="btn" style="background: #ff7f3c">배송<br>목록</a></td>
                     </tr>
                     <tr>
-                        <td><a href="${path }/AdminNoticeList.do" class="btn" style="background:#50AF6B">공지사항<br>목록</a></td>
+                        <td><a href="${path }/AdminNoticeList.do" class="btn" style="background:#ff9359">공지사항<br>목록</a></td>
 
-                        <td><a href="${path }/AdminEventList.do" class="btn" style="background: #3F9D61">이벤트<br>목록</a></td>
+                        <td><a href="${path }/AdminEventList.do" class="btn" style="background: #ff965e">이벤트<br>목록</a></td>
 
-                        <td><a href="${path }/AdminWinnerList.do" class="btn" style="background:  #2E8B57">당첨자<br>목록</a></td>
+                        <td><a href="${path }/AdminWinnerList.do" class="btn" style="background:  #ffa87a">당첨자<br>목록</a></td>
 
-                        <td><a href="${path }" class="btn" style="background: #eb9362">메인<br>으로</a></td>
+                        <td><a href="${path }" class="btn" style="background: #ffba94">메인<br>으로</a></td>
                     </tr>
                     </tbody>
                 </table>
