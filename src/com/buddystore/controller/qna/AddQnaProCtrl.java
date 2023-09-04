@@ -1,4 +1,4 @@
-package com.buddystore.controller.admin;
+package com.buddystore.controller.qna;
 
 import com.buddystore.dto.Qna;
 import com.buddystore.model.QnaDAO;

@@ -66,8 +66,7 @@
 </script>
 
 <style>
-    * { margin: 0;  padding: 0; }
-    body, html { width: 100%; }
+
 </style>
 <script src="./js/jquery-1.10.0.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -75,6 +74,8 @@
 <script src="./js/nav.js"></script>
 <link rel="stylesheet" href="./css/nav.css">
 <style>
+    * { margin: 0;  padding: 0; }
+    body, html { width: 100%; }
     .title { text-align: center; padding-top: 3rem; }
     #hd { border-bottom:2px solid #333; }
     #ft { border-top:2px solid #333; margin-top: 20px; }

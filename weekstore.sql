@@ -1,3 +1,5 @@
+USE buddystore
+
 create table notice(
   no int auto_increment primary key,
   title varchar(200) not null,
@@ -111,20 +113,9 @@ create table review(
   resdate timestamp default current_timestamp
 );
 
-create view profit as (
-  select pno, sum(sprice*amount) as tot from serve group by pno
-  union
-  select pno, sum(rprice*amount) as tot from receive group by pno
-);
 
-create view inventory as (
-  select a.pno as pno, (sum(a.amount)-sum(b.amount)) as amount
-  from receive a
-  join serve b on a.pno = b.pno
-  group by a.pno
-);
 
-DROP TABLE custom
+DROP TABLE custom;
 create table custom(
 id varchar(20) primary key,
 pw VARCHAR(500) not NULL,
@@ -132,10 +123,10 @@ name varchar(100) not null,
 point integer default 0,
 grade varchar(4) default 'F',
 tel varchar(11) not NULL,
-email varchar(100) not null,team22
+email varchar(100) not null,
 birth date not NULL,
-regdate timestamp default CURRENT_TIMESTAMP
-job INT DEFAULT 0,  -- 직업코드 0:학생, 1:학부모, 2: 교사
+regdate timestamp default CURRENT_TIMESTAMP,
+job INT DEFAULT 0, 
 addr VARCHAR(500)
 );
 
@@ -223,6 +214,12 @@ create table payment(
   cnum varchar(100),
   payprice int default 1000,
   dno varchar(100)
+);
+
+create view profit as (
+  select pno, sum(sprice*amount) as tot from serve group by pno
+  union
+  select pno, sum(rprice*amount) as tot from receive group by pno
 );
 -- qna 테이블
 create table qna(

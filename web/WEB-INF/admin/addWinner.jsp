@@ -22,7 +22,6 @@
         .item3 { width:10%; }
         #page-nation1 { width: 960px; margin:20px auto; }
     </style>
-
     <style>
         .btn {
             text-decoration: none;
@@ -55,12 +54,8 @@
             width: 865px;
             height: 323px;
         }
-
-
     </style>
 </head>
-
-
 <body>
 <div class="container-fluid">
     <%@ include file="../../header.jsp"%>

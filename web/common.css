@@ -1,0 +1,25 @@
+@charset "UTF-8";
+/*공통 스타일 */
+* { margin: 0;  padding: 0; }
+body, html { width: 100%; }
+.title { text-align: center; padding-top: 3rem; }
+#hd { border-bottom:2px solid #333; }
+#ft { border-top:2px solid #333; margin-top: 20px; }
+.list { list-style: none; }
+.list li { margin-top: 24px; }
+.msg { text-align: center; }
+.section {
+    margin-top: 100px;
+}
+.btn-primary {
+    background-color: #eb9362;
+    border-color: #eb9362;
+}
+.btn-primary:hover {
+    background-color: #eb9362;
+    border-color: #eb9362;
+}
+#tb1 th { background-color: #eb9362; color:#fff; }
+#tb1 td {
+    background-color: #ffffff;
+}

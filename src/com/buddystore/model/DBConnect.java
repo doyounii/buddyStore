@@ -115,8 +115,8 @@ public interface DBConnect {
     final static String REVIEW_DELETE = "delete from review where rno=?";
 
     //Api 테스트
-    final static String TEST_SELECT_ONE = "select * from test where no=?";
-    final static String TEST_SELECT_ALL = "select * from test";
+    final static String TEST_SELECT_ONE = "select * from notice where no=?";
+    final static String TEST_SELECT_ALL = "select * from notice";
 
     public Connection connect();
     public void close(PreparedStatement pstmt, Connection conn);

@@ -25,7 +25,7 @@ public class Main extends HttpServlet {
         request.setAttribute("newPro",newPro);
 
         request.setAttribute("user", user);
-        RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/index.jsp");
         view.forward(request, response);
     }
 }
