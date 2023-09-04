@@ -28,7 +28,7 @@
 ![weekstore](./WeekStorePresentation/erd12.jpg)
 
 ## 데이터베이스 설계
-![weekstore](./WeekStorePresentation/erd.PNG)
+![weekstore](./WeekStorePresentation/erd.png)
 ![weekstore](./WeekStorePresentation/37.jpg)
 ![weekstore](./WeekStorePresentation/38.jpg)
 ![weekstore](./WeekStorePresentation/39.jpg)
